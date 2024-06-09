@@ -13,8 +13,8 @@ Be carefuk and check content of script, cause I am disabling a lot of system set
 To get started with these dotfiles, you can clone the repository to your home directory:
 
 ```bash
-git clone https://github.com/yourusername/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
+git clone https://github.com/tornikegomareli/dotfiles.git ~/.config
+cd ~/.config
 ```
 
 Then, you can symlink the configuration files to their appropriate locations. For example:
@@ -34,4 +34,4 @@ This repository contains configuration files for the following tools:
 - **nvim**: Configuration for Neovim, a text editor.
 - **sketchybar**: Configuration for SketchyBar, a customizable macOS menu bar.
 - **sketchybar_backup**: Backup configuration for SketchyBar.
-- **yabai**: Configuration for Yabai, a tiling window manager for macOS.
+- **yabai**: Configuration for Yabai, a tiling window manager for macOS. And SKHD for managin Yabai with productive shortucts
