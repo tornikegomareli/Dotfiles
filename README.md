@@ -1,6 +1,7 @@
 ---
 
-# Tornike's Dotfiles 🐈
+# Tornike's Dotfiles 
+![Uploading Screenshot 2024-06-09 at 17.15.26.png…]()
 
 My dotfiles repository! This repository contains my personal configurations for various tools and applications that I use in my development environment. Feel free to explore, use, and adapt these configurations for your own setup.
 
