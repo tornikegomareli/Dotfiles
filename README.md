@@ -1,6 +1,6 @@
 ---
 
-# Tornike's Dotfiles
+# Tornike's Dotfiles 🐈
 
 My dotfiles repository! This repository contains my personal configurations for various tools and applications that I use in my development environment. Feel free to explore, use, and adapt these configurations for your own setup.
 
