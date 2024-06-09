@@ -1,5 +1,3 @@
-Here's a draft for the README file for your dotfiles repository:
-
 ---
 
 # Tornike's Dotfiles
