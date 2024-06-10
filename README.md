@@ -1,5 +1,5 @@
 ## Tornike's Dotfiles 
-<img src="https://github.com/tornikegomareli/Dotfiles/blob/main/Screenshot%202024-06-09%20at%2017.15.26.png" width="350" height="350" alt="Example Image">
+<img src="https://github.com/tornikegomareli/Dotfiles/blob/main/media/Screenshot%202024-06-09%20at%2017.15.26.png" width="350" height="350" alt="Example Image">
 
 My dotfiles repository! This repository contains my personal configurations for various tools and applications that I use in my development environment. Feel free to explore, use, and adapt these configurations for your own setup.
 
