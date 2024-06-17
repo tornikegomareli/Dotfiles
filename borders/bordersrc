@@ -1,12 +1,12 @@
 #!/bin/bash
 
 options=(
-	style=round
-	width=4
-	hidpi=on
-	active_color=0xffd79921
-	inactive_color=0xff928374
-  background_color=0xff282828
+    style=round
+    width=4
+    hidpi=on
+    active_color=0xff7aa2f7  # Tokyo Night Blue
+    inactive_color=0xff565f89 # Tokyo Night Dark Blue
+    background_color=0xff1a1b26 # Tokyo Night Background
 )
 
 borders "${options[@]}"
