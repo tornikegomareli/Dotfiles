@@ -1,5 +1,9 @@
 # opens iTerm2
-alt - return : "${HOME}"/.config/yabai/scripts/open_iterm2.sh
+# alt - return : "${HOME}"/.config/yabai/scripts/open_iterm2.sh
+
+# opens Kitty
+
+alt - return : "${HOME}"/.config/yabai/scripts/open_kitty.sh
 
 # Show system statistics
 fn + lalt - 1 : "${HOME}"/.config/yabai/scripts/show_cpu.sh
