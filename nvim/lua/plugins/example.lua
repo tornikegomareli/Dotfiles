@@ -1,5 +1,5 @@
 return {
-    {
+  {
     "neovim/nvim-lspconfig",
     lazy = false,
     config = function()
@@ -67,6 +67,9 @@ return {
       require("luasnip.loaders.from_vscode").lazy_load()
 
       cmp.setup({
+        sources = {
+          { name = "orgmode" },
+        },
         completion = {
           completeopt = "menu,menuone,preview",
         },
@@ -201,6 +204,25 @@ return {
       vim.keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
       vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts) --> Yank the selected icon into register
       vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
+    end,
+  },
+  {
+    "nvim-orgmode/orgmode",
+    event = "VeryLazy",
+    ft = { "org" },
+    config = function()
+      -- Setup orgmode
+      require("orgmode").setup({
+        org_agenda_files = "~/orgfiles/**/*",
+        org_default_notes_file = "~/orgfiles/refile.org",
+      })
+
+      -- NOTE: If you are using nvim-treesitter with ~ensure_installed = "all"~ option
+      -- add ~org~ to ignore_install
+      -- require('nvim-treesitter.configs').setup({
+      --   ensure_installed = 'all',
+      --   ignore_install = { 'org' },
+      -- })
     end,
   },
 }
