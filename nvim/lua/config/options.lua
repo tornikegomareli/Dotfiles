@@ -3,10 +3,4 @@
 -- Add any additional options here
 --
 
-vim.opt.guifont = "Iosevka Fixed"
-
--- If using GUI versions like Neovide or Nvui, you can configure fonts like this:
-if vim.fn.exists("g:neovide") then
-  vim.g.neovide_font = "Iosevka Fixed"
-  vim.g.neovide_font_size = 18.0
-end
+vim.opt.guifont = "Iosevka Term:h15"
