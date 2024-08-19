@@ -105,3 +105,10 @@ printf "yabai: configuration loaded...\\n"
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
+
+
+# ============= Window opacity rules
+yabai -m config window_opacity on
+yabai -m config window_opacity_duration 0.0
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 1.0
