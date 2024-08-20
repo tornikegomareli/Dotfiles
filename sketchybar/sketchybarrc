@@ -109,6 +109,19 @@ sketchybar --add item time_logo right\
                            label.drawing=off \
                            background.color=0xffF5E3B5
 
+sketchybar --add item date right \
+           --set date update_freq=1000 \
+                      icon.drawing=off \
+                      script="~/.config/sketchybar/plugins/date.sh" \
+                      background.color=0xff3C3E4F \
+                      background.padding_left=0
+
+sketchybar --add item clock_logo right\
+           --set clock_logo icon= \
+                            icon.color=0xff121219\
+                            label.drawing=off \
+                            background.color=0xff92B3F5
+
 sketchybar --add item battery right \
            --set battery update_freq=3 \
                          icon.drawing=off \
@@ -146,19 +159,6 @@ sketchybar --add item temp_logo right \
                      icon.color=0xff121219\
                      label.drawing=off \
                      background.color=0xffF5E3B5
-
-sketchybar --add item pressure right \
-           --set pressure update_freq=60 \
-                     script="~/.config/sketchybar/plugins/pressure.sh" \
-                     icon.drawing=off \
-                     background.color=0xff3C3E4F \
-                     background.padding_left=0
-
-sketchybar --add item pressure_logo right \
-           --set pressure_logo icon=󰈸\
-                     icon.color=0xff121219\
-                     label.drawing=off \
-                     background.color=0xff92B3F5
 
 sketchybar --subscribe net wifi_change wired_change
 
