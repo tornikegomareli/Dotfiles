@@ -5,6 +5,8 @@
 
 vim.opt.guifont = "Iosevka Term:h24"
 
+vim.g.lazyvim_picker = "telescope"
+
 -- Brackets and some formatting
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "swift",

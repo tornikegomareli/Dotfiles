@@ -4,7 +4,7 @@
 
 -- Functions
 local open_plugins_lua = function()
-  vim.cmd("edit ~/.config/nvim/lua/plugins/init.lua")
+  vim.cmd("edit ~/.config/nvim/lua/plugins/example.lua")
 end
 -- Functions
 
@@ -62,4 +62,4 @@ vim.api.nvim_set_keymap("n", "<D-s>", ":w<CR>", { noremap = true, silent = true 
 vim.api.nvim_set_keymap("i", "<D-s>", "<C-\\><C-n>:w<CR>", { noremap = true, silent = true })
 
 -- Map gb to go back to the previous location
-vim.api.nvim_set_keymap('n', 'gb', '<C-o>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "gb", "<C-o>", { noremap = true, silent = true })
