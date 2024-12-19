@@ -48,6 +48,12 @@ return {
     end,
   },
   {
+    "j-hui/fidget.nvim",
+    opts = {
+      -- options
+    },
+  },
+  {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
@@ -118,13 +124,19 @@ return {
   },
   {
     "wojciech-kulik/xcodebuild.nvim",
+    lazy = false,
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-tree.lua", -- (optional) to manage project files
+      "stevearc/oil.nvim", -- (optional) to manage project files
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-dap-ui",
+      "nvim-treesitter/nvim-treesitter",
     },
     config = function()
       require("xcodebuild").setup({
-        show_build_progress_bar = false,
+        show_build_progress_bar = true,
         logs = {
           auto_open_on_success_tests = false,
           auto_open_on_failed_tests = false,
