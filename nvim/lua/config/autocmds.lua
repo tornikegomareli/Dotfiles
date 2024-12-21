@@ -15,7 +15,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_autocmd("TermOpen", {
   group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
   callback = function()
-    vim.bo.number = false
-    vim.bo.relativenumber = false
+    local win = vim.api.nvim_get_current_win()
+    vim.wo[win].number = false
+    vim.wo[win].relativenumber = false
   end,
 })
