@@ -65,3 +65,110 @@ vim.api.nvim_set_keymap("i", "<D-s>", "<C-\\><C-n>:w<CR>", { noremap = true, sil
 vim.api.nvim_set_keymap("n", "gb", "<C-o>", { noremap = true, silent = true })
 
 vim.opt.autochdir = true
+
+--- Find files like in Xcode
+---
+-- lua/config/keymaps.lua
+
+-- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+
+local keymap = vim.keymap
+local opts = { noremap = true, silent = true }
+
+-- Add this at the bottom of the file
+keymap.set("n", "<D-S-o>", function()
+  require("telescope.builtin").find_files({
+    hidden = true,
+    no_ignore = false,
+    file_ignore_patterns = {
+      "%.git/.*",
+      "%.xcodeproj/.*",
+      "%.build/.*",
+      "%.derived/.*",
+      "%.swiftpm/.*",
+      "DerivedData/.*",
+      "%.generated/.*",
+      "%.idea/.*",
+      "%.gradle/.*",
+      "%.spm/.*",
+      "fastlane/.*",
+      "Pods/.*",
+    },
+    previewer = false,
+    layout_config = {
+      height = 0.4, -- Make the window shorter
+    },
+  })
+end, { desc = "Find files (Xcode style)" })
+
+-- Alternative mapping if CMD+SHIFT+O doesn't work in your terminal
+keymap.set("n", "<leader>xf", function()
+  require("telescope.builtin").find_files({
+    hidden = true,
+    no_ignore = false,
+    file_ignore_patterns = {
+      "%.git/.*",
+      "%.xcodeproj/.*",
+      "%.build/.*",
+      "%.derived/.*",
+      "%.swiftpm/.*",
+      "DerivedData/.*",
+      "%.generated/.*",
+      "%.idea/.*",
+      "%.gradle/.*",
+      "%.spm/.*",
+      "fastlane/.*",
+      "Pods/.*",
+    },
+    previewer = false,
+    layout_config = {
+      height = 0.4,
+    },
+  })
+end, { desc = "Find files (Xcode style)" })
+
+-- Add grep (search in files) like Xcode's CMD+SHIFT+F
+keymap.set("n", "<D-S-f>", function()
+  require("telescope.builtin").live_grep({
+    additional_args = function()
+      return { "--hidden" }
+    end,
+    file_ignore_patterns = {
+      "%.git/.*",
+      "%.xcodeproj/.*",
+      "%.build/.*",
+      "%.derived/.*",
+      "%.swiftpm/.*",
+      "DerivedData/.*",
+      "%.generated/.*",
+      "%.idea/.*",
+      "%.gradle/.*",
+      "%.spm/.*",
+      "fastlane/.*",
+      "Pods/.*",
+    },
+  })
+end, { desc = "Search in files (Xcode style)" })
+
+-- Alternative mapping for grep if CMD+SHIFT+F doesn't work
+keymap.set("n", "<leader>xs", function()
+  require("telescope.builtin").live_grep({
+    additional_args = function()
+      return { "--hidden" }
+    end,
+    file_ignore_patterns = {
+      "%.git/.*",
+      "%.xcodeproj/.*",
+      "%.build/.*",
+      "%.derived/.*",
+      "%.swiftpm/.*",
+      "DerivedData/.*",
+      "%.generated/.*",
+      "%.idea/.*",
+      "%.gradle/.*",
+      "%.spm/.*",
+      "fastlane/.*",
+      "Pods/.*",
+    },
+  })
+end, { desc = "Search in files (Xcode style)" })
