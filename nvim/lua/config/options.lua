@@ -3,9 +3,14 @@
 -- Add any additional options here
 --
 
+-- Setting Font and Size
 vim.opt.guifont = "Iosevka Term:h24"
+--21/12/2024
+--
 
+-- Setting Default Picker, Telescope instead of fzf
 vim.g.lazyvim_picker = "telescope"
+--21/12/2024
 
 -- Brackets and some formatting
 vim.api.nvim_create_autocmd("FileType", {
@@ -18,3 +23,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.softtabstop = 2 -- Set soft tab to 2 spaces
   end,
 })
+
+--21/12/2024
+
+-- Set NVim default working directory, whenever file opened
+vim.opt.autochdir = true
+--21/12/2024
