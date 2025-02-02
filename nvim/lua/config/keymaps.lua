@@ -172,3 +172,33 @@ keymap.set("n", "<leader>xs", function()
     },
   })
 end, { desc = "Search in files (Xcode style)" })
+
+-- Add a keymap for the actual replace operation
+vim.keymap.set("n", "<leader>sr", function()
+  -- Get the current search term from the search register
+  local search_term = vim.fn.getreg("/")
+
+  -- Prompt for replacement term
+  local replacement = vim.fn.input("Replace " .. search_term .. " with: ")
+
+  if replacement ~= "" then
+    -- Execute the replacement
+    vim.cmd("%s/" .. search_term .. "/" .. replacement .. "/gc")
+  end
+end, { desc = "Replace current search term" })
+
+-- Replace in quickfix list
+vim.keymap.set("n", "<leader>qr", function()
+  local search_term = vim.fn.input("Search for: ")
+  if search_term == "" then
+    return
+  end
+
+  local replacement = vim.fn.input("Replace with: ")
+  if replacement == "" then
+    return
+  end
+
+  -- Replace in quickfix list
+  vim.cmd("cfdo %s/" .. search_term .. "/" .. replacement .. "/gc")
+end, { desc = "Replace in quickfix list" })
