@@ -4,7 +4,7 @@
 --
 
 -- Setting Font and Size
-vim.opt.guifont = "Iosevka Term:h24"
+vim.opt.guifont = "Monaspace Krypton Medium:h18"
 --21/12/2024
 --
 
