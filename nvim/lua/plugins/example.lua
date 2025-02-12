@@ -104,6 +104,28 @@ return {
               fallback()
             end
           end, { "i", "s" }),
+          ["<tab>"] = cmp.mapping(function(original)
+            print("tab pressed")
+            if cmp.visible() then
+              print("cmp expand")
+              cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+              print("snippet expand")
+              luasnip.expand_or_jump()
+            else
+              print("fallback")
+              original()
+            end
+          end, { "i", "s" }),
+          ["<S-tab>"] = cmp.mapping(function(original)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.expand_or_jumpable() then
+              luasnip.jump(-1)
+            else
+              original()
+            end
+          end, { "i", "s" }),
         }),
         -- sources for autocompletion
         sources = cmp.config.sources({
@@ -206,19 +228,6 @@ return {
     end,
   },
   {
-    "ziontee113/icon-picker.nvim",
-    lazy = false,
-    config = function()
-      require("icon-picker").setup({ disable_legacy_commands = true })
-
-      local opts = { noremap = true, silent = true }
-
-      vim.keymap.set("n", "<Leader><Leader>i", "<cmd>IconPickerNormal<cr>", opts)
-      vim.keymap.set("n", "<Leader><Leader>y", "<cmd>IconPickerYank<cr>", opts) --> Yank the selected icon into register
-      vim.keymap.set("i", "<C-i>", "<cmd>IconPickerInsert<cr>", opts)
-    end,
-  },
-  {
     "nvim-orgmode/orgmode",
     event = "VeryLazy",
     ft = { "org" },
@@ -257,5 +266,25 @@ return {
         cycle_results = false,
       })
     end,
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
   },
 }
