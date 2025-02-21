@@ -8,13 +8,11 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "features": {
-    "edit_prediction_provider": "zed"
+    "inline_completion_provider": "zed"
   },
   "vim_mode": true,
-  "ui_font_size": 28,
-  "buffer_font_family": "Monaspace Krypton",
-  "ui_font_family": "Monaspace Krypton",
-  "buffer_font_size": 24,
+  "ui_font_size": 24,
+  "buffer_font_size": 20,
   "tab_size": 2,
   "soft_tabs": true,
   "theme": {
