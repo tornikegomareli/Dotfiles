@@ -23,16 +23,16 @@
     "show": false,
     "show_tab_bar_buttons": true
   },
+  "terminal": {
+    "dock": "right"
+  },
   "tab_size": 2,
   "soft_tabs": true,
   "cursor_blink": true,
-  "outline_panel": {
-    "dock": "right"
-  },
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "One Light"
+    "dark": "macOS Classic Light"
   },
   "languages": {
     "Swift": {
