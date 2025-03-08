@@ -16,17 +16,20 @@
     "context": "Editor",
     "bindings": {
       "cmd-`": "pane::GoBack",
-      "cmd-shift-o": "workspace::NewSearch",
-      "space o r": "projects::OpenRecent",
-      "space e": "workspace::ToggleLeftDock",
-      "space p t": "project_panel::ToggleFocus"
+      "cmd-shift-o": "workspace::NewSearch"
       // "j k": ["workspace::SendKeystrokes", "escape"]
     }
   },
   {
     "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
     "bindings": {
-      "space l g": ["task::Spawn", { "task_name": "Lazygit" }]
+      "space l g": ["task::Spawn", { "task_name": "Lazygit" }],
+      "space s b": ["task::Spawn", { "task_name": "Swift Build" }],
+      "space e": "workspace::ToggleLeftDock",
+      "space o r": "projects::OpenRecent",
+      "space p t": "project_panel::ToggleFocus",
+      "space f e d": "zed::OpenSettings",
+      "space o t": "workspace::OpenInTerminal"
     }
   }
 ]
