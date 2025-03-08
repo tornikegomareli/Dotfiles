@@ -15,7 +15,11 @@
   {
     "context": "Editor",
     "bindings": {
-      "cmd-`": "pane::GoBack"
+      "cmd-`": "pane::GoBack",
+      "cmd-shift-o": "workspace::NewSearch",
+      "space o r": "projects::OpenRecent",
+      "space e": "workspace::ToggleLeftDock",
+      "space p t": "project_panel::ToggleFocus"
       // "j k": ["workspace::SendKeystrokes", "escape"]
     }
   },
