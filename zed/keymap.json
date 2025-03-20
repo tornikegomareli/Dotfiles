@@ -25,6 +25,8 @@
     "bindings": {
       "space l g": ["task::Spawn", { "task_name": "Lazygit" }],
       "space s b": ["task::Spawn", { "task_name": "Swift Build" }],
+      "space s t": ["task::Spawn", { "task_name": "Swift Test" }],
+      "space s r": ["task::Spawn", { "task_name": "Swift Run" }],
       "space e": "workspace::ToggleLeftDock",
       "space o r": "projects::OpenRecent",
       "cmd-shift-o": ["workspace::SendKeystrokes", "cmd-p"], /// Remapping cmd-p to more xcode like search withing project files

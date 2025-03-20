@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "icon_theme": "Catppuccin Latte",
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
@@ -15,24 +16,24 @@
     "version": "2"
   },
   "vim_mode": true,
-  "ui_font_size": 28,
+  "ui_font_size": 18,
   "buffer_font_family": "Monaspace Krypton",
   "ui_font_family": "Monaspace Krypton",
-  "buffer_font_size": 24,
+  "buffer_font_size": 20,
   "tab_bar": {
     "show": false,
     "show_tab_bar_buttons": true
   },
   "terminal": {
-    "dock": "right"
+    "dock": "bottom"
   },
   "tab_size": 2,
   "soft_tabs": true,
   "cursor_blink": true,
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "Xcode High Contrast Darker"
+    "light": "Gruvbox Dark Hard",
+    "dark": "Ayu Mirage"
   },
   "languages": {
     "Swift": {
@@ -41,6 +42,17 @@
       "formatter": "language_server",
       "format_on_save": "on",
       "tab_size": 2
+    }
+  },
+  "lsp": {
+    "kotlin-language-server": {
+      "settings": {
+        "compiler": {
+          "jvm": {
+            "target": "17"
+          }
+        }
+      }
     }
   }
 }
