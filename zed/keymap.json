@@ -15,7 +15,7 @@
   {
     "context": "Editor",
     "bindings": {
-      "cmd-`": "pane::GoBack",
+      "cmd-§": "pane::GoBack",
       "cmd-shift-o": "workspace::NewSearch"
       // "j k": ["workspace::SendKeystrokes", "escape"]
     }
