@@ -1,4 +1,4 @@
-local theme_name = "everforest"
+local theme_name = "tokyonight"
 
 return {
   -- add gruvbox
