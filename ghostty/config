@@ -1,0 +1,37 @@
+font-family = Berkeley Mono
+font-style = Regular
+font-size = 20
+font-thicken = true
+
+adjust-underline-position = 40%
+adjust-underline-thickness = -60%
+
+cursor-style = block
+cursor-style-blink = true
+
+shell-integration = zsh
+shell-integration-features = no-cursor
+
+keybind = ctrl+d=new_split:right
+
+window-width = 250
+window-height = 80
+window-padding-x = 4
+
+confirm-close-surface = false
+clipboard-paste-protection = false
+unfocused-split-opacity = 1.0
+
+theme = iTerm2 Default
+background = #111111
+foreground = #f4f4ff
+cursor-color = #ff0078
+
+selection-background = 1d3c3b
+selection-foreground = eeeeee
+
+palette = 4=#3D52E2
+palette = 12=#344CFF
+background-opacity = 0.8
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+
