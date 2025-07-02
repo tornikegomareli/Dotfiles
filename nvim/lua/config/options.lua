@@ -4,7 +4,7 @@
 --
 
 -- Setting Font and Size
-vim.opt.guifont = "Monaspace Krypton Medium:h18"
+vim.opt.guifont = "JetBrainsMono Nerd Font Mono:b:h18"
 --21/12/2024
 --
 
@@ -29,6 +29,10 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Set NVim default working directory, whenever file opened
 vim.opt.autochdir = true
 --21/12/2024
+
+-- Use absolute line numbers only (no relative numbers)
+vim.opt.number = true
+vim.opt.relativenumber = false
 
 -- Neovide settings (disable cursor animations)
 if vim.g.neovide then
