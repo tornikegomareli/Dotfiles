@@ -13,6 +13,9 @@ vim.api.nvim_set_keymap("n", "<D-f>", ":Telescope current_buffer_fuzzy_find<CR>"
 
 -- Find files like it is in Xcode
 vim.api.nvim_set_keymap("n", "<D-O>", ":Telescope find_files<CR>", { noremap = true, silent = true })
+
+-- Open recent files
+vim.api.nvim_set_keymap("n", "<D-r>", ":Telescope oldfiles<CR>", { noremap = true, silent = true })
 --
 
 vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")

@@ -15,6 +15,7 @@ return {
         sourcekit = {
           root_dir = lspconfig.util.root_pattern(".git", "Package.swift", "compile_commands.json"),
         },
+        zls = {},
         lspconfig.rust_analyzer.setup({}),
       }
 

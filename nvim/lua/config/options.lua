@@ -29,3 +29,15 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Set NVim default working directory, whenever file opened
 vim.opt.autochdir = true
 --21/12/2024
+
+-- Neovide settings (disable cursor animations)
+if vim.g.neovide then
+  vim.g.neovide_cursor_animation_length = 0
+  vim.g.neovide_cursor_trail_size = 0
+  vim.g.neovide_cursor_antialiasing = true
+  vim.g.neovide_cursor_animate_in_insert_mode = false
+  vim.g.neovide_cursor_animate_command_line = false
+  vim.g.neovide_scroll_animation_length = 0
+  vim.g.neovide_position_animation_length = 0
+  vim.g.neovide_cursor_smooth_blink = false
+end
