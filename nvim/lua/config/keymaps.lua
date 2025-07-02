@@ -67,6 +67,9 @@ vim.api.nvim_set_keymap("i", "<D-s>", "<C-\\><C-n>:w<CR>", { noremap = true, sil
 -- Map gb to go back to the previous location
 vim.api.nvim_set_keymap("n", "gb", "<C-o>", { noremap = true, silent = true })
 
+-- Map Cmd-§ to also go back to the previous location
+vim.api.nvim_set_keymap("n", "<D-§>", "<C-o>", { noremap = true, silent = true })
+
 vim.opt.autochdir = true
 
 --- Find files like in Xcode
