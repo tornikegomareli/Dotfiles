@@ -29,4 +29,3 @@ palette = 4=#3D52E2
 palette = 12=#344CFF
 background-opacity = 1
 keybind = global:cmd+grave_accent=toggle_quick_terminal
-keybind = shift+enter=text:\n
