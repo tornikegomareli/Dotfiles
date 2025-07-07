@@ -22,7 +22,7 @@ confirm-close-surface = false
 clipboard-paste-protection = false
 unfocused-split-opacity = 1.0
 
-theme = dark:Everforest Dark - Hard,light:3024 Day
+theme = dark:CutiePro,light:CutiePro
 
 
 palette = 4=#3D52E2
