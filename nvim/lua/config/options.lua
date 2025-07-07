@@ -4,7 +4,7 @@
 --
 
 -- Setting Font and Size
-vim.opt.guifont = "JetBrainsMono Nerd Font Mono:b:h18"
+vim.opt.guifont = "JetBrainsMono Nerd Font Mono:b:h20"
 --21/12/2024
 --
 
@@ -36,12 +36,22 @@ vim.opt.relativenumber = false
 
 -- Neovide settings (disable cursor animations)
 if vim.g.neovide then
-  vim.g.neovide_cursor_animation_length = 0
-  vim.g.neovide_cursor_trail_size = 0
+  vim.g.neovide_cursor_animation_length = 0.1
+  vim.g.neovide_cursor_trail_size = 0.1
   vim.g.neovide_cursor_antialiasing = true
   vim.g.neovide_cursor_animate_in_insert_mode = false
   vim.g.neovide_cursor_animate_command_line = false
-  vim.g.neovide_scroll_animation_length = 0
-  vim.g.neovide_position_animation_length = 0
-  vim.g.neovide_cursor_smooth_blink = false
+  vim.g.neovide_scroll_animation_length = 0.1
+  vim.g.neovide_position_animation_length = 0.1
+  vim.g.neovide_cursor_smooth_blink = true
+  vim.o.guifont = "JetBrainsMono Nerd Font Mono:h20:b"
+  vim.g.neovide_show_menubar = true
+  vim.g.neovide_scale_factor = 1.0
+  vim.g.neovide_transparency = 0.7
+  vim.g.neovide_window_blurred = true
+  vim.g.neovide_font_hinting = "full"
+  vim.g.neovide_font_edging = "antialias"
+  vim.g.neovide_remember_window_size = true
+  vim.g.neovide_fullscreen = false
+  vim.g.neovide_remember_window_position = true
 end
