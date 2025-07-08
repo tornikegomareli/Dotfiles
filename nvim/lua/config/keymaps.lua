@@ -208,3 +208,24 @@ vim.keymap.set("n", "<leader>qr", function()
   -- Replace in quickfix list
   vim.cmd("cfdo %s/" .. search_term .. "/" .. replacement .. "/gc")
 end, { desc = "Replace in quickfix list" })
+
+-- LSP Go to Definition in splits
+-- Use gv for vertical split (or choose another key combination)
+vim.keymap.set("n", "gv", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition in vertical split" })
+
+-- Use gs for horizontal split
+vim.keymap.set("n", "gs", function()
+  vim.cmd("split")
+  vim.lsp.buf.definition()
+end, { desc = "Go to definition in horizontal split" })
+
+-- Search navigation (like Xcode)
+-- After searching with / or ?, use these to navigate
+vim.keymap.set("n", "<D-g>", "n", { desc = "Go to next search result" })
+vim.keymap.set("n", "<D-S-g>", "N", { desc = "Go to previous search result" })
+
+-- For quickfix navigation (after Telescope sends results to quickfix)
+vim.keymap.set("n", "<leader>cn", ":cnext<CR>", { desc = "Next quickfix item" })
+vim.keymap.set("n", "<leader>cp", ":cprev<CR>", { desc = "Previous quickfix item" })
+vim.keymap.set("n", "<leader>co", ":copen<CR>", { desc = "Open quickfix list" })
+vim.keymap.set("n", "<leader>cc", ":cclose<CR>", { desc = "Close quickfix list" })
