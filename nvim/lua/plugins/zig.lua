@@ -299,6 +299,29 @@ return {
         run_zig_command("zig build", "Zig Build Project")
       end, { desc = "Build Zig project" })
       
+      -- Function to check if we're in a Zig project
+      local function is_zig_project()
+        local build_zig = vim.fn.findfile("build.zig", vim.fn.getcwd() .. ";")
+        return build_zig ~= ""
+      end
+      
+      -- Global keybindings for Zig build commands (only work in Zig projects)
+      vim.keymap.set("n", "<D-S-B>", function()
+        if is_zig_project() then
+          run_zig_command("zig build", "Zig Build")
+        else
+          notify("Not in a Zig project (no build.zig found)", "warn", { title = "Zig" })
+        end
+      end, { desc = "Zig build (in project)" })
+      
+      vim.keymap.set("n", "<D-S-R>", function()
+        if is_zig_project() then
+          run_zig_command("zig build run", "Zig Build Run")
+        else
+          notify("Not in a Zig project (no build.zig found)", "warn", { title = "Zig" })
+        end
+      end, { desc = "Zig build run (in project)" })
+      
       -- Toggle Zig autocompletion
       vim.g.zig_autocompletion_enabled = true
       
