@@ -19,20 +19,22 @@ default_icon_color="0xff93a4c3"
 icon_highlight_color="0xffc75ae8"
 bracket_hightlight_color="0xff862aa1"
 danger_color="0xff992525"
+item_background_color="0xcc000000" # Semi-transparent black background for items
 
 #
 # fonts
 #
-default_icon_font="Font Awesome 6 Pro:Regular:14.0"
-default_label_font="Cascadia Mono PL:SemiBold:14.0"
-brand_font="Font Awesome 6 Brands:Regular:14.0"
+default_icon_font="Font Awesome 6 Free:Regular:16.0"
+default_label_font="JetBrainsMono Nerd Font Mono:Bold:18.0"
+brand_font="JetBrainsMono Nerd Font Mono :Regular:16.0"
 # duotone_font="Font Awesome 6 Duotone:Solid:14.0"
 
 #
 # variables
 #
 plugins="$HOME/.config/sketchybar/plugins"
-display_count="$(yabai -m query --displays | jq -r 'length')"
+# For aerospace, you can manually set this based on your monitor setup
+display_count="1" # Change to "2" if you have two monitors
 
 ############## BAR ##############
 sketchybar --bar \
@@ -40,7 +42,7 @@ sketchybar --bar \
   border_width=0 \
   corner_radius=8 \
   color=${transparent_color} \
-  height=25 \
+  height=30 \
   margin=8 \
   padding_left=10 \
   padding_right=10 \
@@ -54,199 +56,145 @@ sketchybar --default \
   icon.color="${default_icon_color}" \
   icon.font="${default_icon_font}" \
   icon.highlight_color="${icon_highlight_color}" \
-  icon.padding_left=8 \
+  icon.padding_left=3 \
+  icon.padding_right=3 \
+  icon.y_offset=-1 \
   label.color="${default_label_color}" \
   label.font="${default_label_font}" \
-  label.padding_left=4 \
-  updates=when_shown
+  label.padding_left=3 \
+  label.padding_right=5 \
+  label.y_offset=-1 \
+  background.color="${item_background_color}" \
+  background.corner_radius=8 \
+  background.height=28 \
+  background.padding_left=4 background.padding_right=4 updates=when_shown
 
-############## SPACES ###############
-############## DISPLAY 1 ###############
-sketchybar \
-  --add space web left \
-  --set web associated_display=1 \
-  associated_space=1 \
-  icon= \
-  click_script="yabai -m space --focus browser" \
-  --add space slack left \
-  --set slack associated_display=1 \
-  associated_space=2 \
-  icon= \
-  icon.font="${brand_font}" \
-  icon.padding_left 0 \
-  click_script="yabai -m space --focus chat" \
-  --add space mail left \
-  --set mail associated_display=1 \
-  associated_space=3 \
-  icon= \
-  icon.padding_left 0 \
-  click_script="yabai -m space --focus mail" \
-  --add space messages left \
-  --set messages associated_display=1 \
-  associated_space=4 \
-  icon= \
-  icon.padding_left 0 \
-  click_script="yabai -m space --focus messages"
+############## AEROSPACE WORKSPACES ###############
+sketchybar --add event aerospace_workspace_change
 
-sketchybar \
-  --add bracket primary_spaces_bracket \
-  web \
-  slack \
-  mail \
-  messages \
-  --set primary_spaces_bracket \
-  background.color="${bar_color}" \
-  background.border_color="${bracket_hightlight_color}" \
-  background.border_width=2 \
-  background.corner_radius=6
+# Add first separator
+sketchybar --add item space.separator.0 left \
+  --set space.separator.0 \
+  label="|" \
+  label.color="${default_label_color}" \
+  background.color="${transparent_color}" \
+  icon=""
 
-# ############## DISPLAY 2 ###############
-scratch_space=5
-terminal_space=6
-flex=" "
-
-if [ "${display_count}" = "2" ]; then
-  scratch_space=6
-  terminal_space=7
-  flex="flex"
-
+for i in $(seq 1 10); do
   sketchybar \
-    --add space flex left \
-    --set flex associated_display=2 \
-    associated_space=5 \
-    icon=􏢺 \
-    icon.padding_left 0 \
-    click_script="yabai -m space --focus flex"
-fi
+    --add item space.$i left \
+    --set space.$i \
+    label="$i" \
+    icon="" \
+    background.color="${transparent_color}" \
+    script="$plugins/aerospace.sh" \
+    click_script="aerospace workspace $i" \
+    --subscribe space.$i aerospace_workspace_change
+
+  # Add separator after each workspace
+  sketchybar --add item space.separator.$i left \
+    --set space.separator.$i \
+    label="|" \
+    label.color="${default_label_color}" \
+    background.color="${transparent_color}" \
+    icon=""
+done
+
+# Trigger initial update
+sketchybar --trigger aerospace_workspace_change
 
 sketchybar \
-  --add space scratch left \
-  --set scratch associated_display=2 \
-  associated_space="${scratch_space}" \
-  icon= \
-  icon.padding_left 0 \
-  click_script="yabai -m space --focus scratch" \
-  --add space terminal left \
-  --set terminal associated_display=2 \
-  associated_space="${terminal_space}" \
-  icon= \
-  icon.padding_left 0 \
-  click_script="yabai -m space --focus terminal"
-
-sketchybar \
-  --add bracket secondary_spaces_bracket \
-  "${flex}" \
-  scratch \
-  terminal \
-  --set secondary_spaces_bracket \
-  background.color="${bar_color}" \
-  background.border_color="${bracket_hightlight_color}" \
-  background.border_width=2 \
+  --add bracket spaces_bracket \
+  space.separator.0 \
+  space.1 space.separator.1 \
+  space.2 space.separator.2 \
+  space.3 space.separator.3 \
+  space.4 space.separator.4 \
+  space.5 space.separator.5 \
+  space.6 space.separator.6 \
+  space.7 space.separator.7 \
+  space.8 space.separator.8 \
+  space.9 space.separator.9 \
+  space.10 space.separator.10 \
+  --set spaces_bracket \
+  background.color="${item_background_color}" \
+  background.padding_right=4 \
+  background.padding_left=4 \
   background.corner_radius=6
 
 # ################# RIGHT ITEMS ####################
 sketchybar \
-  --add item clock right \
-  --set clock \
-  icon= \
-  icon.padding_left=10 \
-  label.padding_right=10 \
-  update_freq=10 \
-  script="${plugins}/clock.sh" \
-  --add item clock_spacer right \
-  --set clock_spacer \
+  --add item time right \
+  --set time \
+  label.color=0xffF19E38 \
+  update_freq=30 \
+  script="${plugins}/time.sh" \
+  --add item time_spacer right \
+  --set time_spacer \
   label=" " \
-  label.padding_left=2 \
-  label.padding_right=2 \
-  --add item mpd right \
-  --set mpd \
-  associated_display="${display_count}" \
-  update_freq=2 \
-  label.padding_left=10 \
-  label.padding_right=10 \
-  script="${plugins}/mpd.sh" \
-  click_script="mpc toggle" \
-  --add item mpd_spacer right \
-  --set mpd_spacer \
-  associated_display="2" \
-  label=" " \
-  label.padding_left=2 \
-  label.padding_right=2 \
+  background.color="${transparent_color}" \
   --add item weather right \
   --set weather \
-  label.padding_right=10 \
   update_freq=1800 \
   script="${plugins}/weather.sh" \
-  click_script="open https://darksky.net/forecast/34.967,-80.927/us12/en" \
+  click_script="open https://wttr.in/Tbilisi" \
   --add item cpu right \
   --set cpu \
-  icon= \
+  icon=󰻠 \
+  icon.font="${brand_font}" \
   update_freq=5 \
   script="${plugins}/cpu.sh" \
   click_script="open -a activity\ monitor" \
-  --add item zoom right \
-  --set zoom \
-  update_freq=1 \
-  label.padding_right=5 \
-  script="${plugins}/zoom.sh" \
-  click_script="${plugins}/zoom-mute-toggle.sh" \
-  --add item dnd right \
-  --set dnd \
-  icon.color="${danger_color}" \
+  --add item battery right \
+  --set battery \
   update_freq=10 \
-  script="${plugins}/dnd.sh" \
-  click_script="$HOME/bin/dnd-reset"
+  script="${plugins}/battery.sh" \
+  --add item input_source right \
+  --set input_source \
+  update_freq=1 \
+  script="${plugins}/input_source.sh" \
+  --add item meet right \
+  --set meet \
+  icon.font="${brand_font}" \
+  update_freq=1 \
+  script="${plugins}/meet.sh" \
+  click_script="${plugins}/meet-mute-toggle.sh"
 
 sketchybar \
   --add bracket clock_bracket \
-  clock \
+  time \
   --set clock_bracket \
-  background.color="${bracket_hightlight_color}" \
-  background.border_color="${default_icon_color}" \
-  background.border_width=2 \
-  background.corner_radius=6 \
-  --add bracket mpd_bracket \
-  mpd \
-  --set mpd_bracket \
-  background.color="${bar_color}" \
-  background.border_color="${bracket_hightlight_color}" \
-  background.border_width=2 \
-  background.corner_radius=6 \
+  background.color="${transparent_color}" \
   --add bracket utility_bracket \
   weather \
   cpu \
+  battery \
+  input_source \
   --set utility_bracket \
-  background.color="${bar_color}" \
-  background.border_color="${bracket_hightlight_color}" \
-  background.border_width=2 \
-  background.corner_radius=6
+  background.color="${transparent_color}"
 
 ###################### CENTER ITEMS ###################
-if [ "${display_count}" != "1" ]; then
-  sketchybar \
-    --add event window_focus \
-    --add event title_change \
-    --add item window_title center \
-    --set window_title \
-    icon= \
-    icon.padding_left=10 \
-    label.padding_right=10 \
-    script="$plugins/window_title.sh" \
-    --subscribe window_title \
-    window_focus \
-    front_app_switched \
-    space_change \
-    title_change
-fi
+# Always show window title
+sketchybar \
+  --add event window_focus \
+  --add event title_change \
+  --add item window_title center \
+  --set window_title \
+  icon="" \ \
+  script="$plugins/window_title.sh" \
+  --subscribe window_title \
+  window_focus \
+  front_app_switched \
+  space_change \
+  title_change \
+  aerospace_workspace_change
+# fi
 
 sketchybar \
   --add bracket center \
   window_title \
   --set center \
-  background.color="${bar_color}" \
-  background.border_color="${bracket_hightlight_color}" \
-  background.border_width=2 \
-  background.corner_radius=6
+  background.color="${transparent_color}"
 
 ###################### FINALIZE ###################
 sketchybar -m --update

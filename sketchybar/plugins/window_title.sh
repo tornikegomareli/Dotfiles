@@ -1,15 +1,19 @@
 #!/bin/bash
 
-WINDOW_TITLE=$(yabai -m query --windows --window | jq -r '.app')
+# Get the focused window information from aerospace
+WINDOW_INFO=$(aerospace list-windows --focused)
 
-# WINDOW_TITLE=$($yabai -m query --windows --window | jq -r '.title')
+# Extract the app name (second field when split by " | ")
+APP_NAME=$(echo "$WINDOW_INFO" | awk -F' \\| ' '{print $2}')
 
-# if [[ $WINDOW_TITLE = "" ]]; then
-#   WINDOW_TITLE=$($yabai -m query --windows --window | jq -r '.app')
-# fi
+# If still empty, set a default
+if [[ -z "$APP_NAME" || "$APP_NAME" = "" ]]; then
+  APP_NAME="Desktop"
+fi
 
-# if [[ ${#WINDOW_TITLE} -gt 50 ]]; then
-#   WINDOW_TITLE=$(echo "$WINDOW_TITLE" | cut -c 1-50)
-# fi
+# Truncate if too long
+if [[ ${#APP_NAME} -gt 50 ]]; then
+  APP_NAME=$(echo "$APP_NAME" | cut -c 1-50)...
+fi
 
-sketchybar -m --set $NAME label="${WINDOW_TITLE}"
+sketchybar --set $NAME label="${APP_NAME}"
