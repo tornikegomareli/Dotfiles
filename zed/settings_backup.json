@@ -7,18 +7,36 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "features": {
-    "inline_completion_provider": "zed"
+  "context_servers": {
+    "Xcodebuildserver": {
+      "command": {
+        "path": "xcodebuildmcp",
+        "args": [],
+        "env": null
+      },
+      "settings": {}
+    }
   },
+  "icon_theme": "VSCode Great Icons Theme",
   "vim_mode": true,
-  "ui_font_size": 24,
-  "buffer_font_size": 20,
+  "ui_font_size": 18,
+  "buffer_font_family": "JetBrainsMonoNL Nerd Font",
+  "ui_font_family": "Hack Nerd Font Mono",
+  "buffer_font_size": 18,
+  "tab_bar": {
+    "show": true,
+    "show_tab_bar_buttons": true
+  },
+  "terminal": {
+    "dock": "bottom"
+  },
   "tab_size": 2,
   "soft_tabs": true,
+  "cursor_blink": true,
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "ZedSpace Dark Theme"
+    "light": "macOS Classic Light",
+    "dark": "Kanagawa"
   },
   "languages": {
     "Swift": {
@@ -27,6 +45,17 @@
       "formatter": "language_server",
       "format_on_save": "on",
       "tab_size": 2
+    }
+  },
+  "lsp": {
+    "kotlin-language-server": {
+      "settings": {
+        "compiler": {
+          "jvm": {
+            "target": "17"
+          }
+        }
+      }
     }
   }
 }

@@ -7,22 +7,27 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "icon_theme": "VSCode Great Icons Theme",
-  "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
-    },
-    "version": "2"
+  "context_servers": {
+    "Xcodebuildserver": {
+      "source": "custom",
+      "command": {
+        "path": "xcodebuildmcp",
+        "args": [],
+        "env": null
+      },
+      "settings": {}
+    }
   },
+  "icon_theme": "Seti Icon Theme",
   "vim_mode": true,
-  "ui_font_size": 18,
-  "buffer_font_family": "Monaspace Krypton",
-  "ui_font_family": "Monaspace Krypton",
-  "buffer_font_size": 20,
+  "ui_font_size": 20,
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_font_weight": 800,
+  "ui_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_font_size": 24,
   "tab_bar": {
     "show": false,
-    "show_tab_bar_buttons": true
+    "show_tab_bar_buttons": false
   },
   "terminal": {
     "dock": "bottom"
@@ -32,8 +37,8 @@
   "cursor_blink": true,
   "theme": {
     "mode": "system",
-    "light": "Gruvbox Dark Hard",
-    "dark": "Dayfox"
+    "light": "Catppuccin Latte",
+    "dark": "Kanagawa"
   },
   "languages": {
     "Swift": {
@@ -41,7 +46,22 @@
       "language_servers": ["sourcekit-lsp"],
       "formatter": "language_server",
       "format_on_save": "on",
-      "tab_size": 2
+      "tab_size": 2,
+      "indent_guides": {
+        "enabled": false
+      }
+    },
+    "Zig": {
+      "tab_size": 4,
+      "format_on_save": "on",
+      "indent_guides": {
+        "enabled": false
+      }
+    },
+    "Rust": {
+      "indent_guides": {
+        "enabled": false
+      }
     }
   },
   "lsp": {
