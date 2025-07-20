@@ -63,8 +63,6 @@ map("n", "<leader>fed", open_plugins_lua, { desc = "Open plugins.lua" })
 
 vim.api.nvim_set_keymap("n", "<D-s>", ":w<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("i", "<D-s>", "<C-\\><C-n>:w<CR>", { noremap = true, silent = true })
-
--- Map gb to go back to the previous location
 vim.api.nvim_set_keymap("n", "gb", "<C-o>", { noremap = true, silent = true })
 
 -- Map Cmd-§ to also go back to the previous location
@@ -211,7 +209,12 @@ end, { desc = "Replace in quickfix list" })
 
 -- LSP Go to Definition in splits
 -- Use gv for vertical split (or choose another key combination)
-vim.keymap.set("n", "gv", "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>", { desc = "Go to definition in vertical split" })
+vim.keymap.set(
+  "n",
+  "gv",
+  "<cmd>vsplit | lua vim.lsp.buf.definition()<CR>",
+  { desc = "Go to definition in vertical split" }
+)
 
 -- Use gs for horizontal split
 vim.keymap.set("n", "gs", function()
