@@ -136,7 +136,7 @@ sketchybar \
   --add item weather right \
   --set weather \
   update_freq=1800 \
-  script="${plugins}/weather.sh" \
+  script="${plugins}/weather_v2.sh" \
   click_script="open https://wttr.in/Tbilisi" \
   --add item github.issues right \
   --set github.issues \
