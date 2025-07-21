@@ -33,3 +33,5 @@ This repository contains configuration files for the following tools:
 - **sketchybar**: Configuration for SketchyBar, a customizable macOS menu bar.
 - **sketchybar_backup**: Backup configuration for SketchyBar.
 - **yabai**: Configuration for Yabai, a tiling window manager for macOS. And SKHD for managin Yabai with productive shortucts
+- **ghostty**: Configuration for Ghostty, a fast, feature-rich terminal emulator.
+- **aerospace**: Window management integration for SketchyBar.
