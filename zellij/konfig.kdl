@@ -1,0 +1,35 @@
+keybinds {
+    normal {
+        // Change the prefix key from Ctrl+p to Alt+p
+        bind "Alt p" { SwitchToMode "Pane"; }
+        
+        // Direct pane navigation with Alt instead of Ctrl
+        bind "Alt h" { MoveFocus "Left"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
+        bind "Alt l" { MoveFocus "Right"; }
+        
+        // Tab navigation
+        bind "Alt 1" { GoToTab 1; }
+        bind "Alt 2" { GoToTab 2; }
+        bind "Alt 3" { GoToTab 3; }
+        bind "Alt 4" { GoToTab 4; }
+        bind "Alt 5" { GoToTab 5; }
+        
+        // New pane/tab creation
+        bind "Alt n" { NewPane; }
+        bind "Alt t" { NewTab; }
+        bind "Alt x" { CloseFocus; }
+    }
+    
+    pane {
+        bind "h" "Left" { MoveFocus "Left"; }
+        bind "l" "Right" { MoveFocus "Right"; }
+        bind "j" "Down" { MoveFocus "Down"; }
+        bind "k" "Up" { MoveFocus "Up"; }
+        bind "p" { SwitchToMode "Normal"; }
+        bind "n" { NewPane; SwitchToMode "Normal"; }
+        bind "x" { CloseFocus; SwitchToMode "Normal"; }
+        bind "Ctrl c" { SwitchToMode "Normal"; }
+    }
+}
