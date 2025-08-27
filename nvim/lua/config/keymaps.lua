@@ -81,7 +81,12 @@ local opts = { noremap = true, silent = true }
 
 -- Add this at the bottom of the file
 keymap.set("n", "<D-S-o>", function()
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+  if vim.v.shell_error ~= 0 then
+    git_root = vim.fn.getcwd()
+  end
   require("telescope.builtin").find_files({
+    cwd = git_root,
     hidden = true,
     no_ignore = false,
     file_ignore_patterns = {
@@ -107,7 +112,12 @@ end, { desc = "Find files (Xcode style)" })
 
 -- Alternative mapping if CMD+SHIFT+O doesn't work in your terminal
 keymap.set("n", "<leader>xf", function()
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+  if vim.v.shell_error ~= 0 then
+    git_root = vim.fn.getcwd()
+  end
   require("telescope.builtin").find_files({
+    cwd = git_root,
     hidden = true,
     no_ignore = false,
     file_ignore_patterns = {
@@ -133,7 +143,12 @@ end, { desc = "Find files (Xcode style)" })
 
 -- Add grep (search in files) like Xcode's CMD+SHIFT+F
 keymap.set("n", "<D-S-f>", function()
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+  if vim.v.shell_error ~= 0 then
+    git_root = vim.fn.getcwd()
+  end
   require("telescope.builtin").live_grep({
+    cwd = git_root,
     additional_args = function()
       return { "--hidden" }
     end,
@@ -156,7 +171,12 @@ end, { desc = "Search in files (Xcode style)" })
 
 -- Alternative mapping for grep if CMD+SHIFT+F doesn't work
 keymap.set("n", "<leader>xs", function()
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+  if vim.v.shell_error ~= 0 then
+    git_root = vim.fn.getcwd()
+  end
   require("telescope.builtin").live_grep({
+    cwd = git_root,
     additional_args = function()
       return { "--hidden" }
     end,
