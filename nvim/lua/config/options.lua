@@ -34,6 +34,17 @@ vim.opt.autochdir = true
 vim.opt.number = true
 vim.opt.relativenumber = false
 
+-- Disable fold column and fillchars
+vim.opt.foldcolumn = "0"
+vim.opt.foldenable = false
+vim.opt.fillchars = 'eob: '
+vim.opt.foldmethod = "manual"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.signcolumn = "yes"
+vim.opt.statuscolumn = ""
+vim.opt.list = false
+
 -- Neovide settings (disable cursor animations)
 if vim.g.neovide then
   vim.g.neovide_cursor_animation_length = 0.1
@@ -47,7 +58,7 @@ if vim.g.neovide then
   vim.o.guifont = "JetBrainsMono Nerd Font Mono:h20:b"
   vim.g.neovide_show_menubar = true
   vim.g.neovide_scale_factor = 1.0
-  vim.g.neovide_transparency = 0.7
+  vim.g.neovide_transparency = 0.9
   vim.g.neovide_window_blurred = true
   vim.g.neovide_font_hinting = "full"
   vim.g.neovide_font_edging = "antialias"

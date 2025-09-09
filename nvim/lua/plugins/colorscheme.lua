@@ -23,6 +23,7 @@ return {
   { "shaunsingh/nord.nvim" },
   { "neanias/everforest-nvim" },
   { "rose-pine/neovim" },
+  { "savq/melange-nvim" },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -39,15 +40,15 @@ return {
     },
   },
 
-  -- Configure LazyVim to load theme based on system appearance
+  -- Configure LazyVim to load Melange theme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = get_theme_for_appearance(),
+      colorscheme = "melange",
     },
   },
   
-  -- Auto-switch theme on system appearance change
+  -- Auto-switch theme on system appearance change (using Melange)
   {
     "f-person/auto-dark-mode.nvim",
     priority = 1000,
@@ -55,11 +56,11 @@ return {
       update_interval = 1000,
       set_dark_mode = function()
         vim.api.nvim_set_option("background", "dark")
-        vim.cmd("colorscheme everforest")
+        vim.cmd("colorscheme melange")
       end,
       set_light_mode = function()
         vim.api.nvim_set_option("background", "light")
-        vim.cmd("colorscheme catppuccin-latte")
+        vim.cmd("colorscheme melange")
       end,
     },
   },
