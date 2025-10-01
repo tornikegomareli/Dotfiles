@@ -9,13 +9,14 @@ end
 -- Functions
 
 -- vim.api.nvim_set_keymap("n", "<leader>fp", ":Telescope projects<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<D-f>", ":Telescope current_buffer_fuzzy_find<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<D-f>", "<cmd>FzfLua blines<CR>", { noremap = true, silent = true, desc = "Find in buffer" })
+vim.api.nvim_set_keymap("n", "<C-f>", "<cmd>FzfLua blines<CR>", { noremap = true, silent = true, desc = "Find in buffer" })
 
 -- Find files like it is in Xcode
-vim.api.nvim_set_keymap("n", "<D-O>", ":Telescope find_files<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<D-O>", "<cmd>FzfLua files<CR>", { noremap = true, silent = true, desc = "Find files" })
 
 -- Open recent files
-vim.api.nvim_set_keymap("n", "<D-r>", ":Telescope oldfiles<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<D-r>", "<cmd>FzfLua oldfiles<CR>", { noremap = true, silent = true, desc = "Recent files" })
 --
 
 vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")
@@ -85,27 +86,13 @@ keymap.set("n", "<D-S-o>", function()
   if vim.v.shell_error ~= 0 then
     git_root = vim.fn.getcwd()
   end
-  require("telescope.builtin").find_files({
+  require("fzf-lua").files({
     cwd = git_root,
-    hidden = true,
-    no_ignore = false,
-    file_ignore_patterns = {
-      "%.git/.*",
-      "%.xcodeproj/.*",
-      "%.build/.*",
-      "%.derived/.*",
-      "%.swiftpm/.*",
-      "DerivedData/.*",
-      "%.generated/.*",
-      "%.idea/.*",
-      "%.gradle/.*",
-      "%.spm/.*",
-      "fastlane/.*",
-      "Pods/.*",
-    },
+    fd_opts = "--type f --hidden --exclude .git --exclude .xcodeproj --exclude .build --exclude .derived --exclude .swiftpm --exclude DerivedData --exclude .generated --exclude .idea --exclude .gradle --exclude .spm --exclude fastlane --exclude Pods",
     previewer = false,
-    layout_config = {
-      height = 0.4, -- Make the window shorter
+    winopts = {
+      height = 0.4,
+      width = 0.8,
     },
   })
 end, { desc = "Find files (Xcode style)" })
@@ -116,27 +103,13 @@ keymap.set("n", "<leader>xf", function()
   if vim.v.shell_error ~= 0 then
     git_root = vim.fn.getcwd()
   end
-  require("telescope.builtin").find_files({
+  require("fzf-lua").files({
     cwd = git_root,
-    hidden = true,
-    no_ignore = false,
-    file_ignore_patterns = {
-      "%.git/.*",
-      "%.xcodeproj/.*",
-      "%.build/.*",
-      "%.derived/.*",
-      "%.swiftpm/.*",
-      "DerivedData/.*",
-      "%.generated/.*",
-      "%.idea/.*",
-      "%.gradle/.*",
-      "%.spm/.*",
-      "fastlane/.*",
-      "Pods/.*",
-    },
+    fd_opts = "--type f --hidden --exclude .git --exclude .xcodeproj --exclude .build --exclude .derived --exclude .swiftpm --exclude DerivedData --exclude .generated --exclude .idea --exclude .gradle --exclude .spm --exclude fastlane --exclude Pods",
     previewer = false,
-    layout_config = {
+    winopts = {
       height = 0.4,
+      width = 0.8,
     },
   })
 end, { desc = "Find files (Xcode style)" })
@@ -147,25 +120,9 @@ keymap.set("n", "<D-S-f>", function()
   if vim.v.shell_error ~= 0 then
     git_root = vim.fn.getcwd()
   end
-  require("telescope.builtin").live_grep({
+  require("fzf-lua").live_grep({
     cwd = git_root,
-    additional_args = function()
-      return { "--hidden" }
-    end,
-    file_ignore_patterns = {
-      "%.git/.*",
-      "%.xcodeproj/.*",
-      "%.build/.*",
-      "%.derived/.*",
-      "%.swiftpm/.*",
-      "DerivedData/.*",
-      "%.generated/.*",
-      "%.idea/.*",
-      "%.gradle/.*",
-      "%.spm/.*",
-      "fastlane/.*",
-      "Pods/.*",
-    },
+    rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden -g '!.git' -g '!.xcodeproj' -g '!.build' -g '!.derived' -g '!.swiftpm' -g '!DerivedData' -g '!.generated' -g '!.idea' -g '!.gradle' -g '!.spm' -g '!fastlane' -g '!Pods'",
   })
 end, { desc = "Search in files (Xcode style)" })
 
@@ -175,25 +132,9 @@ keymap.set("n", "<leader>xs", function()
   if vim.v.shell_error ~= 0 then
     git_root = vim.fn.getcwd()
   end
-  require("telescope.builtin").live_grep({
+  require("fzf-lua").live_grep({
     cwd = git_root,
-    additional_args = function()
-      return { "--hidden" }
-    end,
-    file_ignore_patterns = {
-      "%.git/.*",
-      "%.xcodeproj/.*",
-      "%.build/.*",
-      "%.derived/.*",
-      "%.swiftpm/.*",
-      "DerivedData/.*",
-      "%.generated/.*",
-      "%.idea/.*",
-      "%.gradle/.*",
-      "%.spm/.*",
-      "fastlane/.*",
-      "Pods/.*",
-    },
+    rg_opts = "--column --line-number --no-heading --color=always --smart-case --hidden -g '!.git' -g '!.xcodeproj' -g '!.build' -g '!.derived' -g '!.swiftpm' -g '!DerivedData' -g '!.generated' -g '!.idea' -g '!.gradle' -g '!.spm' -g '!fastlane' -g '!Pods'",
   })
 end, { desc = "Search in files (Xcode style)" })
 
