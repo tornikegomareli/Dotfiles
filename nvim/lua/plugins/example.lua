@@ -4,23 +4,25 @@ return {
     lazy = false,
     config = function()
       local lspconfig = require("lspconfig")
-      local lsp = vim.lsp
-      local handlers = {
-        ["textDocument/hover"] = lsp.with(lsp.handlers.hover, borders),
-        ["txtdocument/signatureHelp"] = lsp.with(lsp.handlers.signature_help, borders),
-      }
 
       local servers = {
         clangd = {},
         sourcekit = {
-          root_dir = lspconfig.util.root_pattern(".git", "Package.swift", "compile_commands.json"),
+          cmd = { "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp" },
+          root_dir = lspconfig.util.root_pattern("buildServer.json", "*.xcodeproj", "*.xcworkspace", "Package.swift", ".git"),
+          capabilities = {
+            workspace = {
+              didChangeWatchedFiles = {
+                dynamicRegistration = true,
+              },
+            },
+          },
         },
         zls = {},
-        lspconfig.rust_analyzer.setup({}),
+        rust_analyzer = {},
       }
 
       for server, setup in pairs(servers) do
-        setup.handlers = handlers
         lspconfig[server].setup(setup)
       end
 
