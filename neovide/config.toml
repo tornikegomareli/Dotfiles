@@ -1,1 +1,6 @@
 frame = "none"
+fork = false
+wsl = false
+
+[macos]
+input_method_editor = false

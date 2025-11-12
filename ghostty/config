@@ -1,6 +1,6 @@
 font-family = JetBrainsMono Nerd Font Mono
 font-style = Regular
-font-size = 20
+font-size = 22
 font-thicken = true
 
 adjust-underline-position = 40%
@@ -16,13 +16,13 @@ keybind = ctrl+d=new_split:right
 
 window-width = 250
 window-height = 80
-window-padding-x = 4
+window-padding-x = 2
 
 confirm-close-surface = false
 clipboard-paste-protection = false
 unfocused-split-opacity = 1.0
 
-theme = dark:catppuccin-frappe,light:catppuccin-latte
+theme = dark:Catppuccin Frappe,light:Catppuccin Latte
 
 
 palette = 4=#3D52E2
