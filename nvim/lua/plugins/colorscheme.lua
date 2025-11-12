@@ -39,16 +39,24 @@ return {
       },
     },
   },
+  {
+    "EdenEast/nightfox.nvim",
+    priority = 1000,
+  },
+  {
+    "nyoom-engineering/oxocarbon.nvim",
+    priority = 1000,
+  },
 
-  -- Configure LazyVim to load Melange theme
+  -- Configure LazyVim to load carbonfox theme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "melange",
+      colorscheme = "carbonfox",
     },
   },
-  
-  -- Auto-switch theme on system appearance change (using Melange)
+
+  -- Auto-switch theme on system appearance change (using carbonfox for dark, oxocarbon for light)
   {
     "f-person/auto-dark-mode.nvim",
     priority = 1000,
@@ -56,11 +64,11 @@ return {
       update_interval = 1000,
       set_dark_mode = function()
         vim.api.nvim_set_option("background", "dark")
-        vim.cmd("colorscheme melange")
+        vim.cmd("colorscheme carbonfox")
       end,
       set_light_mode = function()
         vim.api.nvim_set_option("background", "light")
-        vim.cmd("colorscheme melange")
+        vim.cmd("colorscheme oxocarbon")
       end,
     },
   },
