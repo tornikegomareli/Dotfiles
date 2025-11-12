@@ -138,38 +138,6 @@ sketchybar \
   update_freq=1800 \
   script="${plugins}/weather_v2.sh" \
   click_script="open https://wttr.in/Tbilisi" \
-  --add item github.issues right \
-  --set github.issues \
-  label="󰠗 0" \
-  popup.background.color="${bar_color}" \
-  popup.background.border_color="${bar_border_color}" \
-  popup.background.border_width=1 \
-  popup.background.corner_radius=8 \
-  click_script="${plugins}/github_issues_popup.sh" \
-  --add item github.reviews right \
-  --set github.reviews \
-  label="󰄬 0" \
-  popup.background.color="${bar_color}" \
-  popup.background.border_color="${bar_border_color}" \
-  popup.background.border_width=1 \
-  popup.background.corner_radius=8 \
-  click_script="${plugins}/github_review_popup.sh" \
-  --add item github.prs right \
-  --set github.prs \
-  label="󰊢 0" \
-  popup.background.color="${bar_color}" \
-  popup.background.border_color="${bar_border_color}" \
-  popup.background.border_width=1 \
-  popup.background.corner_radius=8 \
-  click_script="${plugins}/github_pr_popup.sh" \
-  --add item github.label right \
-  --set github.label \
-  label="git:" \
-  --add item github_stats right \
-  --set github_stats \
-  drawing=off \
-  update_freq=300 \
-  script="${plugins}/github_stats_interactive.sh" \
   --add item cpu right \
   --set cpu \
   icon=􀧓 \
@@ -198,10 +166,6 @@ sketchybar \
   background.color="${transparent_color}" \
   --add bracket utility_bracket \
   weather \
-  github.label \
-  github.prs \
-  github.reviews \
-  github.issues \
   cpu \
   battery \
   input_source \
