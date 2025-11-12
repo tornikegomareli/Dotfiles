@@ -9,6 +9,7 @@
 {
   "context_servers": {
     "Xcodebuildserver": {
+      "source": "custom",
       "command": {
         "path": "xcodebuildmcp",
         "args": [],
@@ -17,15 +18,16 @@
       "settings": {}
     }
   },
-  "icon_theme": "VSCode Great Icons Theme",
+  "icon_theme": "Seti Icon Theme",
   "vim_mode": true,
-  "ui_font_size": 18,
-  "buffer_font_family": "JetBrainsMonoNL Nerd Font",
-  "ui_font_family": "Hack Nerd Font Mono",
-  "buffer_font_size": 18,
+  "ui_font_size": 20,
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_font_weight": 800,
+  "ui_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_font_size": 24,
   "tab_bar": {
-    "show": true,
-    "show_tab_bar_buttons": true
+    "show": false,
+    "show_tab_bar_buttons": false
   },
   "terminal": {
     "dock": "bottom"
@@ -33,18 +35,29 @@
   "tab_size": 2,
   "soft_tabs": true,
   "cursor_blink": true,
-  "theme": {
-    "mode": "system",
-    "light": "macOS Classic Light",
-    "dark": "Kanagawa"
-  },
+  "theme": "Serendipity Sunset",
   "languages": {
     "Swift": {
       "enable_language_server": true,
       "language_servers": ["sourcekit-lsp"],
       "formatter": "language_server",
       "format_on_save": "on",
-      "tab_size": 2
+      "tab_size": 2,
+      "indent_guides": {
+        "enabled": false
+      }
+    },
+    "Zig": {
+      "tab_size": 4,
+      "format_on_save": "on",
+      "indent_guides": {
+        "enabled": false
+      }
+    },
+    "Rust": {
+      "indent_guides": {
+        "enabled": false
+      }
     }
   },
   "lsp": {

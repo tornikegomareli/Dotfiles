@@ -45,6 +45,8 @@
   {
     "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
     "bindings": {
+      "space b b": ["task::Spawn", { "task_name": "SwiftBuild" }],
+      "space r r": ["task::Spawn", { "task_name": "SwiftRun" }],
       "space l g": ["task::Spawn", { "task_name": "Lazygit" }],
       "space s b": ["task::Spawn", { "task_name": "Swift Build" }],
       "space s t": ["task::Spawn", { "task_name": "Swift Test" }],

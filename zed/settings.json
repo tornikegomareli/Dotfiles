@@ -10,11 +10,9 @@
   "context_servers": {
     "Xcodebuildserver": {
       "source": "custom",
-      "command": {
-        "path": "xcodebuildmcp",
-        "args": [],
-        "env": null
-      },
+      "command": "xcodebuildmcp",
+      "args": [],
+      "env": null,
       "settings": {}
     }
   },
@@ -35,11 +33,7 @@
   "tab_size": 2,
   "soft_tabs": true,
   "cursor_blink": true,
-  "theme": {
-    "mode": "system",
-    "light": "Catppuccin Latte",
-    "dark": "Kanagawa"
-  },
+  "theme": "Xcode Midnight",
   "languages": {
     "Swift": {
       "enable_language_server": true,

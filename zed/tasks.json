@@ -46,6 +46,13 @@
     "shell": "system"
   },
   {
+    "label": "SwiftBuild",
+    "command": "xcede build",
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus",
+    "hide": "never"
+  },
+  {
     "label": "Swift Build",
     "command": "swift build",
     "env": {},
@@ -66,6 +73,13 @@
     "reveal_target": "dock",
     "hide": "never",
     "shell": "system"
+  },
+  {
+    "label": "SwiftRun",
+    "command": "xcede buildrun",
+    "allow_concurrent_runs": false,
+    "reveal": "no_focus",
+    "hide": "never"
   },
   {
     "label": "Swift Run",
