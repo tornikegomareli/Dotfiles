@@ -26,10 +26,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 --21/12/2024
 
--- Set NVim default working directory, whenever file opened
-vim.opt.autochdir = true
---21/12/2024
-
 -- Use absolute line numbers only (no relative numbers)
 vim.opt.number = true
 vim.opt.relativenumber = false

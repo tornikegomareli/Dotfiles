@@ -4,6 +4,18 @@
 --
 --
 
+-- Store the initial directory when nvim starts
+local initial_cwd = vim.fn.getcwd()
+
+-- Disable LazyVim root detection by keeping cwd at initial directory
+vim.api.nvim_create_autocmd({ "BufEnter", "LspAttach" }, {
+  callback = function()
+    if vim.fn.getcwd() ~= initial_cwd then
+      vim.cmd("cd " .. initial_cwd)
+    end
+  end,
+})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Higlight when yanking text",
   group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
