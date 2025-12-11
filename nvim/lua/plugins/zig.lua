@@ -183,17 +183,19 @@ return {
       local function run_zig_command(cmd, title)
         local buf = create_zig_terminal(title)
         local output_lines = {}
-        
+
         vim.g.zig_status = "⟳ Running..."
         vim.cmd("redrawstatus")
-        
+
         append_to_buffer(buf, { "Command: " .. cmd, "", "Output:", "─────────────────────────────────────────────────", "" })
-        
+
         local start_time = vim.loop.hrtime()
-        
-        zig_job_id = vim.fn.jobstart(cmd, {
+
+        zig_job_id = vim.fn.jobstart({ "sh", "-c", cmd }, {
           stdout_buffered = false,
           stderr_buffered = false,
+          pty = true,
+          cwd = vim.fn.getcwd(),
           on_stdout = function(_, data)
             if data then
               for _, line in ipairs(data) do
@@ -208,7 +210,7 @@ return {
             if data then
               for _, line in ipairs(data) do
                 if line ~= "" then
-                  append_to_buffer(buf, { "[ERROR] " .. line })
+                  append_to_buffer(buf, { line })
                   table.insert(output_lines, line)
                 end
               end
@@ -217,9 +219,9 @@ return {
           on_exit = function(_, exit_code)
             local end_time = vim.loop.hrtime()
             local elapsed = (end_time - start_time) / 1e9
-            
+
             append_to_buffer(buf, { "", "─────────────────────────────────────────────────" })
-            
+
             if exit_code == 0 then
               vim.g.zig_status = "✓ Success"
               append_to_buffer(buf, {
@@ -243,7 +245,7 @@ return {
                 timeout = 3000,
               })
             end
-            
+
             vim.cmd("redrawstatus")
             zig_job_id = nil
           end,
@@ -258,20 +260,33 @@ return {
         end
         return file
       end
-      
+
+      local function is_zig_project()
+        local build_zig = vim.fn.findfile("build.zig", vim.fn.getcwd() .. ";")
+        return build_zig ~= ""
+      end
+
       vim.keymap.set("n", "<leader>zb", function()
-        local file = get_zig_file()
-        if file then
-          run_zig_command("zig build-exe " .. file .. " -femit-bin=zig-out/bin/" .. vim.fn.expand("%:t:r"), "Zig Build")
+        if is_zig_project() then
+          run_zig_command("zig build", "Zig Build")
+        else
+          local file = get_zig_file()
+          if file then
+            run_zig_command("zig build-exe " .. file .. " -femit-bin=zig-out/bin/" .. vim.fn.expand("%:t:r"), "Zig Build")
+          end
         end
-      end, { desc = "Build Zig file" })
+      end, { desc = "Build Zig project/file" })
       
       vim.keymap.set("n", "<leader>zr", function()
-        local file = get_zig_file()
-        if file then
-          run_zig_command("zig run " .. file, "Zig Run")
+        if is_zig_project() then
+          run_zig_command("zig build run", "Zig Build Run")
+        else
+          local file = get_zig_file()
+          if file then
+            run_zig_command("zig run " .. file, "Zig Run")
+          end
         end
-      end, { desc = "Run Zig file" })
+      end, { desc = "Run Zig project/file" })
       
       vim.keymap.set("n", "<leader>zt", function()
         local file = get_zig_file()
@@ -298,13 +313,7 @@ return {
       vim.keymap.set("n", "<leader>zc", function()
         run_zig_command("zig build", "Zig Build Project")
       end, { desc = "Build Zig project" })
-      
-      -- Function to check if we're in a Zig project
-      local function is_zig_project()
-        local build_zig = vim.fn.findfile("build.zig", vim.fn.getcwd() .. ";")
-        return build_zig ~= ""
-      end
-      
+
       -- Global keybindings for Zig build commands (only work in Zig projects)
       vim.keymap.set("n", "<D-S-B>", function()
         if is_zig_project() then
