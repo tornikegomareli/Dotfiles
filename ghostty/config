@@ -3,6 +3,13 @@ font-style = Regular
 font-size = 22
 font-thicken = true
 
+background-blur-radius = 50
+background-opacity = 0.8
+mouse-hide-while-typing = true
+window-decoration = true
+window-padding-x = 8
+macos-option-as-alt = true
+
 adjust-underline-position = 40%
 adjust-underline-thickness = -60%
 
@@ -22,12 +29,11 @@ confirm-close-surface = false
 clipboard-paste-protection = false
 unfocused-split-opacity = 1.0
 
-theme = dark:Catppuccin Frappe,light:Catppuccin Latte
+theme = kanagawa-dragon
 
 
 palette = 4=#3D52E2
 palette = 12=#344CFF
-background-opacity = 0.8
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 keybind = shift+enter=text:\n
 confirm-close-surface = false
