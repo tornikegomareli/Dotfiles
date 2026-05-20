@@ -1,15 +1,8 @@
--- rootstrap lazy.nvim, LazyVim and your plugins
+-- Entry point. Keep this thin.
+--
+-- Editor options live in lua/config/options.lua (LazyVim loads it before
+-- lazy.setup evaluates plugin specs — `mapleader` and other "must be set
+-- before plugins" globals belong there, not here).
+-- Autocmds live in lua/config/autocmds.lua (loaded on the VeryLazy event).
+-- Keymaps live in lua/config/keymaps.lua and per-plugin lazy specs.
 require("config.lazy")
-
-vim.opt.swapfile = false
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250"
-vim.g.mapleader = " " -- This sets space as leader
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
-  callback = function()
-    vim.opt_local.spell = false
-  end,
-})

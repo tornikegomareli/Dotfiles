@@ -1,39 +1,29 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
---
+-- Editor options. Loaded by LazyVim BEFORE lazy.setup evaluates plugin specs,
+-- which is why `mapleader` must be set here (not in init.lua) — otherwise
+-- plugin `keys =` tables resolve <leader> against the wrong key.
+-- LazyVim defaults: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 
--- Setting Font and Size
-vim.opt.guifont = "JetBrainsMono Nerd Font Mono:b:h20"
---21/12/2024
---
+-- Leader must be set before any plugin keymap references it.
+vim.g.mapleader = " "
 
--- Setting Default Picker, Telescope instead of fzf
+-- Default picker (overrides LazyVim's choice).
 vim.g.lazyvim_picker = "telescope"
---21/12/2024
 
--- Brackets and some formatting
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "swift",
-  callback = function()
-    vim.opt_local.cindent = true
-    vim.opt_local.cinoptions = "L0"
-    vim.opt_local.shiftwidth = 2 -- Set indent to 2 spaces
-    vim.opt_local.tabstop = 2 -- Set tab to 2 spaces
-    vim.opt_local.softtabstop = 2 -- Set soft tab to 2 spaces
-  end,
-})
+-- Font (GUI clients: Neovide, etc.)
+vim.opt.guifont = "JetBrainsMono Nerd Font Mono:b:h20"
 
---21/12/2024
+-- Editor behaviour
+vim.opt.swapfile = false
+vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250"
 
--- Use absolute line numbers only (no relative numbers)
+-- Line numbers: absolute only.
 vim.opt.number = true
 vim.opt.relativenumber = false
 
--- Disable fold column and fillchars
+-- Folding off by default; we open files fully expanded.
 vim.opt.foldcolumn = "0"
 vim.opt.foldenable = false
-vim.opt.fillchars = 'eob: '
+vim.opt.fillchars = "eob: "
 vim.opt.foldmethod = "manual"
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
@@ -41,7 +31,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.statuscolumn = ""
 vim.opt.list = false
 
--- Neovide settings (disable cursor animations)
+-- Neovide-specific settings (no-op when running in a terminal).
 if vim.g.neovide then
   vim.g.neovide_cursor_animation_length = 0.1
   vim.g.neovide_cursor_trail_size = 0.1

@@ -1,29 +1,24 @@
-local function get_system_appearance()
-  local handle = io.popen("defaults read -g AppleInterfaceStyle 2>/dev/null")
-  if handle then
-    local result = handle:read("*a")
-    handle:close()
-    return result:match("Dark") and "dark" or "light"
-  end
-  return "dark"
-end
-
-local function get_theme_for_appearance()
-  local appearance = get_system_appearance()
-  if appearance == "light" then
-    return "catppuccin-latte"
-  else
-    return "catppuccin-frappe"
-  end
-end
+-- Colourscheme stack.
+--
+-- Active themes:
+--   dark  → carbonfox (from nightfox.nvim)
+--   light → catppuccin-latte
+--
+-- Switching is driven by auto-dark-mode.nvim, which polls macOS appearance.
+-- The other theme plugins below are kept available for ad-hoc `:colorscheme`
+-- browsing — remove any you don't want to keep installed.
 
 return {
-  -- add gruvbox
+  -- Extra themes available via `:colorscheme <name>`.
   { "ellisonleao/gruvbox.nvim" },
   { "shaunsingh/nord.nvim" },
   { "neanias/everforest-nvim" },
   { "rose-pine/neovim" },
   { "savq/melange-nvim" },
+  { "nyoom-engineering/oxocarbon.nvim", priority = 1000 },
+
+  -- Light theme. `priority = 1000` ensures it loads before other UI plugins
+  -- so their highlight groups inherit the right palette.
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -39,16 +34,12 @@ return {
       },
     },
   },
-  {
-    "EdenEast/nightfox.nvim",
-    priority = 1000,
-  },
-  {
-    "nyoom-engineering/oxocarbon.nvim",
-    priority = 1000,
-  },
 
-  -- Configure LazyVim to load carbonfox theme
+  -- Dark theme provider (carbonfox is one of the nightfox variants).
+  { "EdenEast/nightfox.nvim", priority = 1000 },
+
+  -- Tell LazyVim which colourscheme to use at startup. auto-dark-mode below
+  -- overrides this dynamically once it knows the system appearance.
   {
     "LazyVim/LazyVim",
     opts = {
@@ -56,19 +47,19 @@ return {
     },
   },
 
-  -- Auto-switch theme on system appearance change (using carbonfox for dark, oxocarbon for light)
+  -- Bridge macOS appearance → :colorscheme. Polls every `update_interval` ms.
   {
     "f-person/auto-dark-mode.nvim",
     priority = 1000,
     opts = {
       update_interval = 1000,
       set_dark_mode = function()
-        vim.api.nvim_set_option("background", "dark")
+        vim.o.background = "dark"
         vim.cmd("colorscheme carbonfox")
       end,
       set_light_mode = function()
-        vim.api.nvim_set_option("background", "light")
-        vim.cmd("colorscheme oxocarbon")
+        vim.o.background = "light"
+        vim.cmd("colorscheme catppuccin-latte")
       end,
     },
   },

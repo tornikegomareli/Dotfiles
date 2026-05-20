@@ -16,7 +16,7 @@ keybinds clear-defaults=true {
         bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "normal"; }
         bind "f" { ToggleFocusFullscreen; SwitchToMode "normal"; }
         bind "h" { MoveFocus "left"; }
-        bind "i" { TogglePanePinned; SwitchToMode "normal"; }
+        bind "i" { Run "zsh" { floating true; close_on_exit true; }; SwitchToMode "normal"; }
         bind "j" { MoveFocus "down"; }
         bind "k" { MoveFocus "up"; }
         bind "l" { MoveFocus "right"; }
@@ -282,8 +282,24 @@ load_plugins {
  
 // Choose the theme that is specified in the themes section.
 // Default: default
-// 
-// theme "dracula"
+//
+theme "custom"
+
+themes {
+    custom {
+        fg "#cdd6f4"
+        bg "#1e1e2e"
+        black "#181825"
+        red "#f38ba8"
+        green "#af5fff"
+        yellow "#f9e2af"
+        blue "#89b4fa"
+        magenta "#af5fff"
+        cyan "#94e2d5"
+        white "#cdd6f4"
+        orange "#fab387"
+    }
+}
  
 // Choose the base input mode of zellij.
 // Default: normal
