@@ -3,7 +3,7 @@ font-style = Regular
 font-size = 22
 font-thicken = true
 
-background-blur-radius = 50
+background-blur-radius = 20
 background-opacity = 0.8
 mouse-hide-while-typing = true
 window-decoration = true
@@ -29,7 +29,7 @@ confirm-close-surface = false
 clipboard-paste-protection = false
 unfocused-split-opacity = 1.0
 
-theme = kanagawa-dragon
+theme = light:Catppuccin Latte,dark:Kanagawa Dragon
 
 
 palette = 4=#3D52E2
@@ -37,3 +37,5 @@ palette = 12=#344CFF
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 keybind = shift+enter=text:\n
 confirm-close-surface = false
+custom-shader = shaders/cursor_warp.glsl
+keybind = super+f=unbind

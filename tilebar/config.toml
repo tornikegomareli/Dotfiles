@@ -1,0 +1,61 @@
+schema_version = 1
+
+[[tiles]]
+acknowledged_configuration_notices = []
+configuration_schema_version = 1
+id = "tilebar-00000000-0000-0000-0000-000000000900"
+kind = "tilebar"
+settings_revision = 0
+
+[tiles.placement]
+display = "main"
+is_enabled = true
+order = 0
+zone = "left"
+
+[tiles.settings]
+
+[[tiles]]
+acknowledged_configuration_notices = []
+configuration_schema_version = 1
+id = "clock-0CFA6556-307A-451B-ACF4-751C6D93E071"
+kind = "clock"
+settings_revision = 0
+
+[tiles.placement]
+display = "main"
+is_enabled = true
+order = 1
+zone = "left"
+
+[tiles.settings]
+
+[[tiles]]
+acknowledged_configuration_notices = []
+configuration_schema_version = 1
+id = "workspaces-F73CFA2A-5213-4F71-BBFD-A2078FC54230"
+kind = "workspaces"
+settings_revision = 0
+
+[tiles.placement]
+display = "main"
+is_enabled = true
+order = 2
+zone = "left"
+
+[tiles.settings]
+
+[[tiles]]
+acknowledged_configuration_notices = []
+configuration_schema_version = 1
+id = "battery-0A3259C4-11CA-4FF0-9965-B66AA8A7BE1E"
+kind = "battery"
+settings_revision = 0
+
+[tiles.placement]
+display = "main"
+is_enabled = true
+order = 0
+zone = "right"
+
+[tiles.settings]

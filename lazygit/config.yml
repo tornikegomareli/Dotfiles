@@ -1,2 +1,4 @@
 os:
   editPreset: 'nvim'
+  edit: '/opt/homebrew/bin/nvim {{filename}}'
+  editAtLine: '/opt/homebrew/bin/nvim +{{line}} {{filename}}'

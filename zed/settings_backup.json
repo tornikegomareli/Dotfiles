@@ -7,14 +7,17 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
   "context_servers": {
     "Xcodebuildserver": {
       "source": "custom",
-      "command": {
-        "path": "xcodebuildmcp",
-        "args": [],
-        "env": null
-      },
+      "command": "xcodebuildmcp",
+      "args": [],
+      "env": null,
       "settings": {}
     }
   },
@@ -35,7 +38,6 @@
   "tab_size": 2,
   "soft_tabs": true,
   "cursor_blink": true,
-  "theme": "Serendipity Sunset",
   "languages": {
     "Swift": {
       "enable_language_server": true,

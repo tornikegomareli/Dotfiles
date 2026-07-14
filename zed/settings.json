@@ -7,21 +7,41 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "theme": {
-    "mode": "light",
+    "mode": "dark",
     "light": "One Light",
-    "dark": "One Dark"
+    "dark": "Ayu Mirage"
   },
   "context_servers": {
     "Xcodebuildserver": {
-      "source": "custom",
       "command": "xcodebuildmcp",
       "args": [],
       "env": null,
       "settings": {}
     }
   },
-  "icon_theme": "Seti Icon Theme",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Seti Icon Theme",
+    "dark": "Seti Icon Theme"
+  },
   "vim_mode": true,
   "ui_font_size": 20,
   "buffer_font_family": "JetBrainsMono Nerd Font Mono",

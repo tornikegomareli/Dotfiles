@@ -1,0 +1,133 @@
+// Yazelix Cursors settings
+// Edit this file through `yzx config ui`, `yzc init`, or your editor.
+// In Ghostty standalone setups, add: config-file = ~/.config/yazelix_ghostty_cursors/ghostty.conf
+{
+  "schema_version": 1,
+  "enabled_cursors": [
+    "blaze",
+    "snow",
+    "cosmic",
+    "ocean",
+    "forest",
+    "sunset",
+    "neon",
+    "eclipse",
+    "dusk",
+    "orchid",
+    "reef",
+    "magma"
+  ],
+  "settings": {
+    "trail": "random",
+    "trail_effect": "random",
+    "mode_effect": "random",
+    "glow": "medium",
+    "duration": 1.0,
+    "kitty_enable_cursor": true
+  },
+  "cursor": [
+    {
+      "name": "blaze",
+      "family": "mono",
+      "color": "#ffb929",
+      "accent_color": "#ff550a",
+      "cursor_color": "#ffb929"
+    },
+    {
+      "name": "snow",
+      "family": "mono",
+      "color": "#ffffff",
+      "accent_color": "#cccccc",
+      "cursor_color": "#ffffff"
+    },
+    {
+      "name": "cosmic",
+      "family": "mono",
+      "color": "#c761f5",
+      "accent_color": "#7439e0",
+      "cursor_color": "#c761f5"
+    },
+    {
+      "name": "ocean",
+      "family": "mono",
+      "color": "#5ea8ff",
+      "accent_color": "#1b62f6",
+      "cursor_color": "#5ea8ff"
+    },
+    {
+      "name": "forest",
+      "family": "mono",
+      "color": "#3bd17a",
+      "accent_color": "#1c9e5b",
+      "cursor_color": "#3bd17a"
+    },
+    {
+      "name": "sunset",
+      "family": "mono",
+      "color": "#ff7a59",
+      "accent_color": "#ff3a5b",
+      "cursor_color": "#ff7a59"
+    },
+    {
+      "name": "neon",
+      "family": "curated_template",
+      "template": "neon",
+      "cursor_color": "#0090ff"
+    },
+    {
+      "name": "eclipse",
+      "family": "split",
+      "divider": "vertical",
+      "transition": "soft",
+      "colors": [
+        "#2e294e",
+        "#ffd400"
+      ],
+      "cursor_color": "#ffd400"
+    },
+    {
+      "name": "dusk",
+      "family": "split",
+      "divider": "vertical",
+      "transition": "soft",
+      "colors": [
+        "#1e1e2f",
+        "#e94560"
+      ],
+      "cursor_color": "#e94560"
+    },
+    {
+      "name": "orchid",
+      "family": "split",
+      "divider": "vertical",
+      "transition": "hard",
+      "colors": [
+        "#ff6b00",
+        "#206dce"
+      ],
+      "cursor_color": "#ff6b00"
+    },
+    {
+      "name": "reef",
+      "family": "split",
+      "divider": "vertical",
+      "transition": "soft",
+      "colors": [
+        "#00e6ff",
+        "#00ff66"
+      ],
+      "cursor_color": "#00e6ff"
+    },
+    {
+      "name": "magma",
+      "family": "split",
+      "divider": "horizontal",
+      "transition": "soft",
+      "colors": [
+        "#ff1600",
+        "#2a3340"
+      ],
+      "cursor_color": "#ff1600"
+    }
+  ]
+}
