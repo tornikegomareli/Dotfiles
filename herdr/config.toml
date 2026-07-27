@@ -1,0 +1,112 @@
+# herdr config — tuned to match this machine's nvim (LazyVim) muscle memory.
+#
+# Only overrides live here; everything else stays on herdr's defaults.
+#   full annotated defaults   herdr --default-config
+#   validate                  herdr config check
+#   apply to running server   herdr server reload-config   (or prefix+shift+r)
+#   undo everything           rm ~/.config/herdr/config.toml && herdr server reload-config
+#
+# ── Chords deliberately avoided, because something else already owns them ───
+#   ctrl+h/j/k/l   nvim window navigation      (nvim/lua/config/keymaps.lua:65-68)
+#   ctrl+f         nvim FzfLua blines          (keymaps.lua:120)
+#   ctrl+space     blink.cmp completion        (nvim/lua/plugins/lsp.lua:105)
+#   ctrl+d         ghostty new_split:right     (ghostty/config:22)
+#   cmd+*          your whole Mac-style nvim layer (a/c/v/x/s/z/f/g/i/o/r, +shift)
+#   alt+j, alt+k   LazyVim move-line-down/up
+#
+# ctrl+alt+* is unclaimed by nvim, Ghostty and macOS here, so it is the
+# prefix-free family. Every binding below keeps its prefix form too, so nothing
+# breaks if a direct chord is swallowed by some other layer.
+
+[keys]
+# ctrl+p, matching Zellij's pane-mode key, so `ctrl+p r` / `ctrl+p d` split the
+# same way they do there.
+#
+# What this costs inside panes, since herdr takes the key first:
+#   zsh   ctrl+p = previous command in history
+#   nvim  ctrl+p = move_selection_previous in telescope pickers
+#         (nvim/lua/plugins/telescope.lua:12)
+# Zellij takes ctrl+p too, so this is the trade you already live with.
+prefix = "ctrl+p"
+
+# ── Panes = nvim windows ────────────────────────────────────────────────────
+# prefix+hjkl preserves the <C-w>hjkl grammar you already use; ctrl+alt+hjkl is
+# the prefix-free twin, since plain ctrl+hjkl has to stay with nvim.
+focus_pane_left  = ["prefix+h", "ctrl+alt+h"]
+focus_pane_down  = ["prefix+j", "ctrl+alt+j"]
+focus_pane_up    = ["prefix+k", "ctrl+alt+k"]
+focus_pane_right = ["prefix+l", "ctrl+alt+l"]
+
+# Zellij pane mode: ctrl+p then r = split right, d = split down, n = new pane.
+# The old vim-ish v/s bindings are kept as aliases so nothing you learned breaks.
+split_vertical   = ["prefix+r", "prefix+n", "prefix+v", "ctrl+alt+v"]
+split_horizontal = ["prefix+d", "prefix+s", "ctrl+alt+s"]
+
+settings = "prefix+shift+s"
+
+# Zellij pane mode: x = close, f = fullscreen, c = rename pane.
+close_pane  = "prefix+x"
+zoom        = ["prefix+f", "prefix+z", "ctrl+alt+z"]
+rename_pane = "prefix+c"
+
+# Moved off prefix+r, which is now "split right".
+resize_mode = "prefix+shift+r"
+
+# ── Tabs ────────────────────────────────────────────────────────────────────
+# Tabs moved OFF the prefix letters that Zellij's pane mode owns:
+#   prefix+c is now rename-pane, prefix+n is new-pane, prefix+p is next-pane.
+# So tab cycling lives on the ctrl+alt brackets (vim's ]b / [b grammar) and
+# new-tab gets t for "tab".
+new_tab      = ["prefix+t", "ctrl+alt+c"]
+next_tab     = "ctrl+alt+]"
+previous_tab = "ctrl+alt+["
+switch_tab   = "prefix+1..9"
+
+# Zellij pane mode: p = focus next pane.
+cycle_pane_next = "prefix+p"
+
+# ── Spaces (workspaces) = your projects ─────────────────────────────────────
+# next/previous/switch_workspace ship UNSET — this is the gap you ran into.
+# Mnemonic split: brackets move through tabs, n/p move through spaces.
+switch_workspace   = "prefix+shift+1..9"
+next_workspace     = "ctrl+alt+n"
+previous_workspace = "ctrl+alt+p"
+toggle_sidebar     = ["prefix+b", "ctrl+alt+b"]
+
+# One-chord access, matching how you reach pickers in nvim (cmd+shift+o / +f).
+# Those two exact chords are unavailable: cmd+shift+o is your nvim find-files,
+# and cmd+shift+f is BOTH your nvim live-grep and Ghostty's end_search — herdr
+# taking either would swallow it before nvim ever saw it.
+#
+# Free cmd+shift letters on this machine (not Ghostty 1.3.1, not your nvim, not
+# macOS): c i k l m n s u x y.  Picked s = Spaces, k = the goto picker.
+# If a cmd chord does not reach herdr, Ghostty is not transmitting it — fall
+# back to the ctrl+alt twin, which always works.
+workspace_picker = ["prefix+w", "cmd+shift+s", "ctrl+alt+w"]
+# no ctrl+alt+k twin here: that one is focus_pane_up. prefix+g is the fallback.
+goto             = ["prefix+g", "cmd+shift+k"]
+
+# ── Scrollback straight into nvim ───────────────────────────────────────────
+edit_scrollback = "prefix+e"
+
+# ── LazyGit popup, mirroring <leader>gt in nvim ─────────────────────────────
+[[keys.command]]
+key = "ctrl+alt+g"
+type = "popup"
+command = "lazygit"
+width = "90%"
+height = "90%"
+
+[theme]
+name = "one-dark"
+auto_switch = false
+
+[ui.toast]
+delivery = "herdr"
+
+[ui]
+show_agent_labels_on_pane_borders = true
+
+[experimental]
+pane_history = false
+switch_ascii_input_source_in_prefix = false

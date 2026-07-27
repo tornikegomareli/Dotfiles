@@ -1,0 +1,5 @@
+# Runtime state — only config.toml belongs in version control.
+*.sock
+*.log
+session.json
+.plugins.lock
