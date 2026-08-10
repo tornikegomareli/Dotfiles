@@ -12,8 +12,6 @@ brew analytics off
 # Brew Taps
 echo "Installing Brew Formulae..."
 brew tap homebrew/cask-fonts
-brew tap FelixKratz/formulae
-brew tap koekeishiya/formulae
 
 # Brew Formulae
 brew install gsl
@@ -43,10 +41,6 @@ brew install dooit
 brew install alfred
 brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
-brew install skhd
-brew install fnnn --head
-brew install sketchybar
-brew install svim
 brew install sf-symbols
 brew install switchaudio-osx
 brew install lazygit
@@ -117,18 +111,14 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 # Copying and checking out configuration files
 echo "Planting Configuration Files..."
-[ ! -d "$HOME/dotfiles" ] && git clone --bare git@github.com:FelixKratz/dotfiles.git $HOME/dotfiles
-git --git-dir=$HOME/dotfiles/ --work-tree=$HOME checkout master
+[ ! -d "$HOME/.config/.git" ] && git clone https://github.com/tornikegomareli/Dotfiles.git $HOME/.config
 
 # Installing Fonts
 git clone git@github.com:shaunsingh/SFMono-Nerd-Font-Ligaturized.git /tmp/SFMono_Nerd_Font
 mv /tmp/SFMono_Nerd_Font/* $HOME/Library/Fonts
 rm -rf /tmp/SFMono_Nerd_Font/
 
-curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.4/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
-
 source $HOME/.zshrc
-cfg config --local status.showUntrackedFiles no
 
 # Python Packages
 echo "Installing Python Packages..."
@@ -146,12 +136,6 @@ pip install tensorflow-macos
 pip install tensorflow-metal
 pip install debugpy
 pip install sklearn
-
-# Start Services
-echo "Starting Services (grant permissions)..."
-brew services start skhd
-brew services start sketchybar
-brew services start svim
 
 echo "Installation complete...\nRun nvim +PackerSync and Restart..."
 
