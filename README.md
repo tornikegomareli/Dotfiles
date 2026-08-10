@@ -20,7 +20,6 @@ git clone https://github.com/tornikegomareli/Dotfiles.git ~/.config
 | git | `git/` | |
 | gh | `gh/` | GitHub CLI |
 | [opencode](https://opencode.ai) | `opencode/` | AGENTS.md rules + herdr plugin |
-| amp | `amp/` | vibe-island bridge plugin |
 
 Also here but rarely touched: `flutter/`, `kitty/`, `neofetch/`, `neovide/`, `yarn/`, `yazelix/`, `zed/`.
 

@@ -44,7 +44,6 @@ brew install alfred
 brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
 brew install skhd
-brew install fyabai --head
 brew install fnnn --head
 brew install sketchybar
 brew install svim
@@ -151,13 +150,8 @@ pip install sklearn
 # Start Services
 echo "Starting Services (grant permissions)..."
 brew services start skhd
-brew services start fyabai
 brew services start sketchybar
 brew services start svim
 
-csrutil status
-echo "Do not forget to disable SIP and reconfigure keyboard -> $HOME/.config/keyboard..."
-open "$HOME/.config/keyboard/KeyboardModifierKeySetup.png"
-echo "Add sudoer manually:\n '$(whoami) ALL = (root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | awk "{print \$1;}") $(which yabai) --load-sa' to '/private/etc/sudoers.d/yabai'"
 echo "Installation complete...\nRun nvim +PackerSync and Restart..."
 
