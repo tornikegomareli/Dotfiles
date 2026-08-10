@@ -14,9 +14,15 @@ echo "Installing Brew..."
 eval "$(/opt/homebrew/bin/brew shellenv)"
 brew analytics off
 
-# Dotfiles
+# Dotfiles (~/.config usually already exists on a fresh Mac, so no plain clone)
 echo "Planting Configuration Files..."
-[ ! -d "$HOME/.config/.git" ] && git clone https://github.com/tornikegomareli/Dotfiles.git $HOME/.config
+if [ ! -d "$HOME/.config/.git" ]; then
+  mkdir -p $HOME/.config
+  git -C $HOME/.config init
+  git -C $HOME/.config remote add origin https://github.com/tornikegomareli/Dotfiles.git
+  git -C $HOME/.config fetch origin
+  git -C $HOME/.config checkout -f -t origin/main
+fi
 
 # Everything: taps, formulae, casks, App Store apps
 # (sign in to the App Store first, mas needs it)
