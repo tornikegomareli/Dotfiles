@@ -31,8 +31,16 @@ nvim moves between splits with `ctrl+hjkl`, herdr moves between panes with
 `ctrl+p 1..9` in herdr. The comments in `aerospace/aerospace.toml` and
 `herdr/config.toml` document which chords each layer owns and why.
 
-## Install script
+## New Mac in one script
 
-`.install.sh` bootstraps a fresh Mac (Xcode CLI tools, Homebrew, packages).
-It dates from my yabai/SketchyBar era and needs a rewrite — read it before
-running, it also changes macOS system settings.
+`.install.sh` bootstraps a fresh Mac: Xcode CLI tools, Homebrew, this repo
+into `~/.config`, then everything in `Brewfile` — a full snapshot of my
+machine (taps, formulae, casks, App Store apps). Sign in to the App Store
+first for the `mas` installs. The script also sets my macOS defaults, so
+read it before running.
+
+Refresh the snapshot after installing something new:
+
+```bash
+brew bundle dump --force --file=~/.config/Brewfile
+```
