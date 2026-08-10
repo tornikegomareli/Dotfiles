@@ -1,10 +1,10 @@
 -- xcede.nvim: local Xcode integration (build / run / test from within nvim).
--- Loaded from ~/Development/xcede.nvim. See lua/config/autocmds.lua for the
+-- Loaded from ~/Development/_archive/xcede.nvim. See lua/config/autocmds.lua for the
 -- xcodebuild-finished → Trouble integration.
 
 return {
   {
-    dir = "~/Development/xcede.nvim",
+    dir = "~/Development/_archive/xcede.nvim",
     name = "xcede.nvim",
     lazy = false,
     config = function()

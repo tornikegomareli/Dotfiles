@@ -1,0 +1,21 @@
+# Runtime state and junk — config only in this repo.
+.DS_Store
+
+# App runtime/telemetry dirs, not config
+Battle.net/
+cagent/
+
+# herdr runtime output
+herdr/default.profraw
+herdr/release-notes.json
+
+# vercel plugin session state
+vercel-plugin/active-session.json
+
+# Backup files
+*.bak
+*.bak.*
+tilebar/config.toml.bak*
+tilebar/config.toml.before-*
+tilebar/config.toml.e2e-backup
+tilebar/set-test-tile.sh

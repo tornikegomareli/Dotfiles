@@ -1,3 +1,4 @@
+onboarding = false
 # herdr config — tuned to match this machine's nvim (LazyVim) muscle memory.
 #
 # Only overrides live here; everything else stays on herdr's defaults.
@@ -98,7 +99,7 @@ width = "90%"
 height = "90%"
 
 [theme]
-name = "one-dark"
+name = "rose-pine"
 auto_switch = false
 
 [ui.toast]

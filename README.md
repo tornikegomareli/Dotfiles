@@ -1,37 +1,39 @@
-## Tornike's Dotfiles 
-<img src="https://github.com/tornikegomareli/Dotfiles/blob/main/media/Screenshot%202024-06-09%20at%2017.15.26.png" width="350" height="350" alt="Example Image">
+# Tornike's Dotfiles
 
-My dotfiles repository! This repository contains my personal configurations for various tools and applications that I use in my development environment. Feel free to explore, use, and adapt these configurations for your own setup.
-
-There is as well .install.sh file, which will automatically install and make macOS machine ready for development. 
-Be carefuk and check content of script, cause I am disabling a lot of system settings from macOS system.
-
-## Installation
-
-To get started with these dotfiles, you can clone the repository to your home directory:
+My `~/.config` as a git repo. Clone it in place, no symlinks:
 
 ```bash
-git clone https://github.com/tornikegomareli/dotfiles.git ~/.config
-cd ~/.config
+git clone https://github.com/tornikegomareli/Dotfiles.git ~/.config
 ```
 
-Then, you can symlink the configuration files to their appropriate locations. For example:
+## What I actually use
 
-```bash
-ln -s ~/.dotfiles/nvim ~/.config/nvim
-ln -s ~/.dotfiles/kitty ~/.config/kitty
-# Add more symlinks as needed
-```
+| Tool | Config | Notes |
+|---|---|---|
+| [Ghostty](https://ghostty.org) | `ghostty/` | Terminal. Catppuccin Latte / Cobalt2 |
+| [Neovim](https://neovim.io) | `nvim/` | LazyVim base, Xcode integration via xcede.nvim |
+| [Zellij](https://zellij.dev) | `zellij/` | Terminal multiplexer, custom theme |
+| [herdr](https://herdr.dev) | `herdr/` | Agent multiplexer. `ctrl+p` prefix, Zellij-style pane keys |
+| [AeroSpace](https://github.com/nikitabobko/AeroSpace) | `aerospace/` | Tiling WM. `ctrl+hjkl` focus, `ctrl+1..8` workspaces |
+| Tilebar | `tilebar/` | My own macOS panel, workspace-aware via AeroSpace hooks |
+| [lazygit](https://github.com/jesseduffield/lazygit) | `lazygit/` | Git TUI, opened from nvim and herdr |
+| git | `git/` | |
+| gh | `gh/` | GitHub CLI |
+| [opencode](https://opencode.ai) | `opencode/` | AGENTS.md rules + herdr plugin |
+| amp | `amp/` | vibe-island bridge plugin |
 
-This repository contains configuration files for the following tools:
+Also here but rarely touched: `flutter/`, `kitty/`, `neofetch/`, `neovide/`, `yarn/`, `yazelix/`, `zed/`.
 
-- **borders**: Configuration for window borders.
-- **iterm2**: Configuration for iTerm2 terminal emulator.
-- **kitty**: Configuration for Kitty terminal emulator.
-- **neofetch**: Configuration for Neofetch, a system information tool.
-- **nvim**: Configuration for Neovim, a text editor.
-- **sketchybar**: Configuration for SketchyBar, a customizable macOS menu bar.
-- **sketchybar_backup**: Backup configuration for SketchyBar.
-- **yabai**: Configuration for Yabai, a tiling window manager for macOS. And SKHD for managin Yabai with productive shortucts
-- **ghostty**: Configuration for Ghostty, a fast, feature-rich terminal emulator.
-- **aerospace**: Window management integration for SketchyBar.
+## Keybinding philosophy
+
+One grammar everywhere: vim. AeroSpace moves between windows with `ctrl+hjkl`,
+nvim moves between splits with `ctrl+hjkl`, herdr moves between panes with
+`ctrl+p hjkl` or `ctrl+alt+hjkl`. Workspaces are `ctrl+1..8` in AeroSpace and
+`ctrl+p 1..9` in herdr. The comments in `aerospace/aerospace.toml` and
+`herdr/config.toml` document which chords each layer owns and why.
+
+## Install script
+
+`.install.sh` bootstraps a fresh Mac (Xcode CLI tools, Homebrew, packages).
+It dates from my yabai/SketchyBar era and needs a rewrite — read it before
+running, it also changes macOS system settings.

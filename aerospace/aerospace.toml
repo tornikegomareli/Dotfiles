@@ -1,0 +1,258 @@
+# Place a copy of this config to ~/.aerospace.toml
+# After that, you can edit ~/.aerospace.toml to your liking
+
+# You can use it to add commands that run after login to macOS user session.
+# 'start-at-login' needs to be 'true' for 'after-login-command' to work
+# Available commands: https://nikitabobko.github.io/AeroSpace/commands
+after-login-command = []
+
+# You can use it to add commands that run after AeroSpace startup.
+# 'after-startup-command' is run after 'after-login-command'
+# Available commands : https://nikitabobko.github.io/AeroSpace/commands
+after-startup-command = []
+
+# Notify Tilebar about workspace changes
+exec-on-workspace-change = [
+    '/bin/sh', '-c',
+    '/Users/tgomareli/Library/Developer/Xcode/DerivedData/Tilebar-azhhgtalcjqrfbetsahhdaongzwm/Build/Products/Debug/Tilebar.app/Contents/MacOS/tilebar-helper event workspace_change "$AEROSPACE_FOCUSED_WORKSPACE" "$AEROSPACE_PREV_WORKSPACE"'
+]
+
+on-focus-changed = [
+    'exec-and-forget /Users/tgomareli/Library/Developer/Xcode/DerivedData/Tilebar-azhhgtalcjqrfbetsahhdaongzwm/Build/Products/Debug/Tilebar.app/Contents/MacOS/tilebar-helper event focus_change'
+]
+
+# Start AeroSpace at login
+start-at-login = true
+
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
+# The 'accordion-padding' specifies the size of accordion padding
+# You can set 0 to disable the padding feature
+accordion-padding = 0
+
+# Possible values: tiles|accordion
+default-root-container-layout = 'accordion'
+
+# Possible values: horizontal|vertical|auto
+# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
+#               tall monitor (anything higher than wide) gets vertical orientation
+default-root-container-orientation = 'auto'
+
+# Mouse follows focus when focused monitor changes
+# Drop it from your config, if you don't like this behavior
+# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
+# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+# Fallback value (if you omit the key): on-focused-monitor-changed = []
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
+# Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
+# Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
+automatically-unhide-macos-hidden-apps = false
+
+# Possible values: (qwerty|dvorak|colemak)
+# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
+[key-mapping]
+    preset = 'qwerty'
+
+# Gaps between windows (inner-*) and between monitor edges (outer-*).
+# Possible values:
+# - Constant:     gaps.outer.top = 8
+# - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
+#                 In this example, 24 is a default value when there is no match.
+#                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
+#                 See:
+#                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+[gaps]
+    inner.horizontal = 10
+    inner.vertical =   10
+    outer.left =       15
+    outer.bottom =     20
+    # Reserve Tilebar's 38-point panel height plus 10 points of breathing room.
+    outer.top = 48
+    outer.right =      15
+
+# 'main' binding mode declaration
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+# 'main' binding mode must be always presented
+# Fallback value (if you omit the key): mode.main.binding = {}
+[mode.main.binding]
+
+    # All possible keys:
+    # - Letters.        a, b, c, ..., z
+    # - Numbers.        0, 1, 2, ..., 9
+    # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+    # - F-keys.         f1, f2, ..., f20
+    # - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon,
+    #                   backtick, leftSquareBracket, rightSquareBracket, space, enter, esc,
+    #                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
+    #                   sectionSign (ISO keyboards only, european keyboards only)
+    # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+    #                   keypadMinus, keypadMultiply, keypadPlus
+    # - Arrows.         left, down, up, right
+
+    # All possible modifiers: cmd, alt, ctrl, shift
+
+    # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
+    # You can uncomment the following lines to open up terminal with alt + enter shortcut
+    # (like in i3)
+    # alt-enter = '''exec-and-forget osascript -e '
+    # tell application "Terminal"
+    #     do script
+    #     activate
+    # end tell'
+    # '''
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#layout
+    alt-slash = 'layout tiles horizontal vertical'
+    alt-comma = 'layout accordion horizontal vertical'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#focus
+    ctrl-h = 'focus left'
+    ctrl-j = 'focus down'
+    ctrl-k = 'focus up'
+    ctrl-l = 'focus right'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move
+    ctrl-cmd-h = 'move left'
+    ctrl-cmd-j = 'move down'
+    ctrl-cmd-k = 'move up'
+    ctrl-cmd-l = 'move right'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#resize
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
+
+    # Resize width
+    ctrl-shift-minus = 'resize width -15'
+    ctrl-shift-equal = 'resize width +15'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+    ctrl-1 = 'workspace 1'
+    ctrl-2 = 'workspace 2'
+    ctrl-3 = 'workspace 3'
+    ctrl-f = 'workspace 4'
+    ctrl-4 = "workspace 4"
+    ctrl-5 = 'workspace 5'
+    ctrl-6 = 'workspace 6'
+    ctrl-7 = 'workspace 7'
+    ctrl-8 = 'workspace 8'
+    # Alt-letter workspace bindings removed so Alt-<letter> passes through to terminal
+    # apps (Zellij, etc). Workspace switching uses Ctrl-1..8 above.
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+    ctrl-cmd-1 = 'move-node-to-workspace 1'
+    ctrl-cmd-2 = 'move-node-to-workspace 2'
+    ctrl-cmd-3 = 'move-node-to-workspace 3'
+    ctrl-cmd-4 = 'move-node-to-workspace 4'
+    ctrl-cmd-5 = 'move-node-to-workspace 5'
+    ctrl-cmd-6 = 'move-node-to-workspace 6'
+    ctrl-cmd-7 = 'move-node-to-workspace 7'
+    ctrl-cmd-8 = 'move-node-to-workspace 8'
+    # Alt-shift-letter move-to-workspace bindings removed to free Alt-shift-<letter>
+    # for terminal apps. Window moves use Ctrl-cmd-1..8 above.
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+    alt-tab = 'workspace-back-and-forth'
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+    # See: https://nikitabobko.github.io/AeroSpace/commands#mode
+    alt-shift-semicolon = 'mode service'
+
+# 'service' binding mode declaration.
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main'] # reset layout
+    f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+    backspace = ['close-all-windows-but-current', 'mode main']
+
+    # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
+    #s = ['layout sticky tiling', 'mode main']
+
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']
+
+    down = 'volume down'
+    up = 'volume up'
+    shift-down = ['volume set 0', 'mode main']
+
+
+# Custom window movement configuration
+# Clean shot X - set to floating to prevent window management issues
+[[on-window-detected]]
+if.app-id = 'pl.maketheweb.cleanshotx'
+run = ['layout floating']
+
+# 1. Xcode
+[[on-window-detected]]
+if.app-id = 'com.apple.dt.Xcode'
+run = ['move-node-to-workspace 1']
+
+# 2. nvim
+[[on-window-detected]]
+if.app-id = 'com.neovide.neovide'
+run = ['move-node-to-workspace 1']
+
+# 3. Dia
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.dia'
+run = ['move-node-to-workspace 2']
+
+# 4. Ghostty
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = ['move-node-to-workspace 3']
+
+# 5. Slack
+[[on-window-detected]]
+if.app-id = 'com.tinyspeck.slackmacgap'
+run = ['move-node-to-workspace 4']
+
+# 6. ChatGPT
+[[on-window-detected]]
+if.app-id = 'com.openai.chat'
+run = ['move-node-to-workspace 5']
+
+# 7. Claude
+[[on-window-detected]]
+if.app-id = 'com.anthropic.claudefordesktop'
+run = ['move-node-to-workspace 5']
+
+# 6. WhatsApp
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = ['move-node-to-workspace 6']
+
+# 7. Finder
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = ['move-node-to-workspace 7']
+
+# 8. Calendar (macOS native Calendar app)
+[[on-window-detected]]
+if.app-id = 'com.apple.iCal'
+run = ['move-node-to-workspace 8']
+
+# System Preferences - always floating
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = ['layout floating']
+
+# System Settings (macOS Ventura+) - always floating
+[[on-window-detected]]
+if.app-id = 'com.apple.SystemPreferences'
+run = ['layout floating']
+
+# iPhone Mirroring - tiled so resize works
+[[on-window-detected]]
+if.app-id = 'com.apple.ScreenContinuity'
+run = ['layout tiling']
