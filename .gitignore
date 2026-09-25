@@ -23,9 +23,8 @@ tilebar/set-test-tile.sh
 # Secrets
 .env
 
-# herdr plugin checkouts and generated registry
+# herdr plugin checkouts (reinstall from herdr/plugins.json)
 herdr/plugins/github/
-herdr/plugins.json
 
 # App runtime state and caches
 raycast/

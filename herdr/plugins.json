@@ -1,0 +1,628 @@
+[
+  {
+    "plugin_id": "jhochenbaum.hunkdiff",
+    "name": "hunk",
+    "version": "0.1.0",
+    "min_herdr_version": "0.8.0",
+    "description": "Review agent-authored diffs in hunk, and send your inline comments back to the agent that wrote them.",
+    "manifest_path": "/Users/tgomareli/.config/herdr/plugins/github/jhochenbaum.hunkdiff-a2dc99e853fa/herdr-plugin.toml",
+    "plugin_root": "/Users/tgomareli/.config/herdr/plugins/github/jhochenbaum.hunkdiff-a2dc99e853fa",
+    "enabled": true,
+    "platforms": [
+      "macos",
+      "linux"
+    ],
+    "build": [
+      {
+        "command": [
+          "npm",
+          "ci"
+        ]
+      },
+      {
+        "command": [
+          "npm",
+          "run",
+          "build"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "close-review",
+        "title": "hunk: close the review pane",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "close-review"
+        ]
+      },
+      {
+        "id": "install-pager",
+        "title": "hunk: set up hunk as your VCS pager (git automatically, jj and sl by hand)",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "install-pager"
+        ]
+      },
+      {
+        "id": "next-comment",
+        "title": "hunk: go to the next review comment",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "next-comment"
+        ]
+      },
+      {
+        "id": "prev-comment",
+        "title": "hunk: go to the previous review comment",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "prev-comment"
+        ]
+      },
+      {
+        "id": "reload",
+        "title": "hunk: reload the open review",
+        "contexts": [
+          "workspace",
+          "pane"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "reload"
+        ]
+      },
+      {
+        "id": "remove-keys",
+        "title": "hunk: remove default keybindings",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "remove-keys"
+        ]
+      },
+      {
+        "id": "review",
+        "title": "hunk: review changes",
+        "contexts": [
+          "workspace",
+          "pane"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "review"
+        ]
+      },
+      {
+        "id": "review:branch",
+        "title": "hunk: review this branch against its base",
+        "contexts": [
+          "workspace",
+          "pane"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "review:branch"
+        ]
+      },
+      {
+        "id": "review:commit",
+        "title": "hunk: review the last commit (or a clicked GitHub commit link)",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "review:commit"
+        ]
+      },
+      {
+        "id": "review:staged",
+        "title": "hunk: review staged changes",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "review:staged"
+        ]
+      },
+      {
+        "id": "review:stash",
+        "title": "hunk: review the most recent stash entry",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "review:stash"
+        ]
+      },
+      {
+        "id": "send-review",
+        "title": "hunk: send review to agent",
+        "contexts": [
+          "pane"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "send-review"
+        ]
+      },
+      {
+        "id": "setup-keys",
+        "title": "hunk: install default keybindings",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "setup-keys"
+        ]
+      },
+      {
+        "id": "uninstall-pager",
+        "title": "hunk: stop using hunk as your VCS pager",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "uninstall-pager"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "pane.agent_status_changed",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"${HERDR_PLUGIN_ROOT:-.}/dist/bin/event.js\""
+        ]
+      },
+      {
+        "on": "pane.closed",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"${HERDR_PLUGIN_ROOT:-.}/dist/bin/event.js\""
+        ]
+      },
+      {
+        "on": "pane.exited",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"${HERDR_PLUGIN_ROOT:-.}/dist/bin/event.js\""
+        ]
+      },
+      {
+        "on": "worktree.removed",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"${HERDR_PLUGIN_ROOT:-.}/dist/bin/event.js\""
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "review",
+        "title": "hunk review",
+        "placement": "split",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review"
+        ]
+      },
+      {
+        "id": "review-branch",
+        "title": "hunk review (branch)",
+        "placement": "split",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review:branch"
+        ]
+      },
+      {
+        "id": "review-commit",
+        "title": "hunk review (commit)",
+        "placement": "split",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review:commit"
+        ]
+      },
+      {
+        "id": "review-staged",
+        "title": "hunk review (staged)",
+        "placement": "split",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review:staged"
+        ]
+      },
+      {
+        "id": "review-stash",
+        "title": "hunk review (stash)",
+        "placement": "split",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review:stash"
+        ]
+      }
+    ],
+    "link_handlers": [
+      {
+        "id": "github-commit",
+        "title": "hunk: review this GitHub commit",
+        "pattern": "^https://github\\.com/[^/]+/[^/]+/commit/[0-9a-fA-F]{7,40}/?$",
+        "action": "review:commit"
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "jhochenbaum",
+      "repo": "herdr-hunk-diff",
+      "resolved_commit": "6810ab31b34ec28eb302603846bc4339e7063655",
+      "managed_path": "/Users/tgomareli/.config/herdr/plugins/github/jhochenbaum.hunkdiff-a2dc99e853fa",
+      "installed_unix_ms": 1786820418379
+    }
+  },
+  {
+    "plugin_id": "persiyanov.reviewr",
+    "name": "reviewr",
+    "version": "0.30.2",
+    "min_herdr_version": "0.7.5",
+    "description": "Review agent-written diffs beside the chat and add line comments to the agent input.",
+    "manifest_path": "/Users/tgomareli/.config/herdr/plugins/github/persiyanov.reviewr-e87b654a74f8/herdr-plugin.toml",
+    "plugin_root": "/Users/tgomareli/.config/herdr/plugins/github/persiyanov.reviewr-e87b654a74f8",
+    "enabled": true,
+    "platforms": [
+      "macos",
+      "linux"
+    ],
+    "build": [
+      {
+        "command": [
+          "bash",
+          "herdr/install.sh"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "close",
+        "title": "reviewr: close pane",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "herdr/pane.sh",
+          "close"
+        ]
+      },
+      {
+        "id": "open",
+        "title": "reviewr: open pane",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "herdr/pane.sh",
+          "open"
+        ]
+      },
+      {
+        "id": "toggle",
+        "title": "reviewr: toggle pane",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "herdr/pane.sh",
+          "toggle"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "worktree.created",
+        "command": [
+          "bash",
+          "herdr/pane.sh",
+          "auto-open"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "pane",
+        "title": "reviewr",
+        "placement": "split",
+        "command": [
+          "sh",
+          "-c",
+          "exec \"$HERDR_PLUGIN_ROOT/bin/herdr-reviewr\""
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "persiyanov",
+      "repo": "herdr-reviewr",
+      "resolved_commit": "249ec795cfa55e817b882e09c7c2890eeac8e03c",
+      "managed_path": "/Users/tgomareli/.config/herdr/plugins/github/persiyanov.reviewr-e87b654a74f8",
+      "installed_unix_ms": 1786603098063
+    }
+  },
+  {
+    "plugin_id": "tgomareli.herdrnvim",
+    "name": "herdrnvim",
+    "version": "0.1.0",
+    "min_herdr_version": "0.8.0",
+    "description": "Review agent-authored diffs in Neovim with diffview.nvim, comment per line, and send the comments back to the agent that wrote them.",
+    "manifest_path": "/Users/tgomareli/Development/herdrnvim/herdr-plugin.toml",
+    "plugin_root": "/Users/tgomareli/Development/herdrnvim",
+    "enabled": true,
+    "platforms": [
+      "macos",
+      "linux"
+    ],
+    "actions": [
+      {
+        "id": "pending",
+        "title": "herdrnvim: print pending agents",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "sh",
+          "-c",
+          "exec python3 \"$HERDR_PLUGIN_ROOT/bin/herdrnvim.py\" agents"
+        ]
+      },
+      {
+        "id": "review",
+        "title": "herdrnvim: review pending agents",
+        "contexts": [
+          "workspace",
+          "pane"
+        ],
+        "command": [
+          "sh",
+          "-c",
+          "exec python3 \"$HERDR_PLUGIN_ROOT/bin/herdrnvim.py\" review tab"
+        ]
+      },
+      {
+        "id": "review-split",
+        "title": "herdrnvim: review pending agents (split)",
+        "contexts": [
+          "workspace",
+          "pane"
+        ],
+        "command": [
+          "sh",
+          "-c",
+          "exec python3 \"$HERDR_PLUGIN_ROOT/bin/herdrnvim.py\" review split"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "pane.agent_status_changed",
+        "command": [
+          "sh",
+          "-c",
+          "exec python3 \"$HERDR_PLUGIN_ROOT/bin/herdrnvim.py\" event"
+        ]
+      },
+      {
+        "on": "pane.exited",
+        "command": [
+          "sh",
+          "-c",
+          "exec python3 \"$HERDR_PLUGIN_ROOT/bin/herdrnvim.py\" event"
+        ]
+      },
+      {
+        "on": "worktree.removed",
+        "command": [
+          "sh",
+          "-c",
+          "exec python3 \"$HERDR_PLUGIN_ROOT/bin/herdrnvim.py\" event"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "review",
+        "title": "review",
+        "placement": "tab",
+        "command": [
+          "sh",
+          "-c",
+          "exec python3 \"$HERDR_PLUGIN_ROOT/bin/herdrnvim.py\" pane"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "local"
+    }
+  },
+  {
+    "plugin_id": "tgomareli.launcher",
+    "name": "Launcher",
+    "version": "0.1.0",
+    "min_herdr_version": "0.9.0",
+    "description": "Type a name, or say what you want in plain words, and run the Herdr action that does it.",
+    "manifest_path": "/Users/tgomareli/Development/herdr-launcher/herdr-plugin.toml",
+    "plugin_root": "/Users/tgomareli/Development/herdr-launcher",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "command": [
+          "cargo",
+          "build",
+          "--release"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "open",
+        "title": "Launcher: open",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "sh",
+          "-c",
+          "exec \"$HERDR_BIN_PATH\" plugin pane open --plugin tgomareli.launcher --entrypoint launcher"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "launcher",
+        "title": "Launcher",
+        "placement": "popup",
+        "width": "70%",
+        "height": 24,
+        "command": [
+          "sh",
+          "-c",
+          "exec \"$HERDR_PLUGIN_ROOT/target/release/herdr-launcher\""
+        ]
+      }
+    ],
+    "source": {
+      "kind": "local"
+    }
+  },
+  {
+    "plugin_id": "tgomareli.tempo",
+    "name": "Tempo",
+    "version": "0.1.0",
+    "min_herdr_version": "0.7.5",
+    "description": "Agent time accounting. Records how long each agent spends working, blocked, and idle, and warns when one has been blocked too long.",
+    "manifest_path": "/Users/tgomareli/Development/herdr-tempo/herdr-plugin.toml",
+    "plugin_root": "/Users/tgomareli/Development/herdr-tempo",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "startup": [
+      {
+        "command": [
+          "sh",
+          "-c",
+          "exec python3 \"$HERDR_PLUGIN_ROOT/bin/tempo.py\" start"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "report",
+        "title": "Tempo report",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "sh",
+          "-c",
+          "exec \"$HERDR_BIN_PATH\" plugin pane open --plugin tgomareli.tempo --entrypoint report --placement overlay"
+        ]
+      },
+      {
+        "id": "start",
+        "title": "Start Tempo recorder",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "sh",
+          "-c",
+          "exec python3 \"$HERDR_PLUGIN_ROOT/bin/tempo.py\" start"
+        ]
+      },
+      {
+        "id": "stop",
+        "title": "Stop Tempo recorder",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "sh",
+          "-c",
+          "exec python3 \"$HERDR_PLUGIN_ROOT/bin/tempo.py\" stop"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "report",
+        "title": "Tempo",
+        "placement": "overlay",
+        "command": [
+          "sh",
+          "-c",
+          "exec python3 \"$HERDR_PLUGIN_ROOT/bin/tempo.py\" report"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "local"
+    }
+  }
+]
