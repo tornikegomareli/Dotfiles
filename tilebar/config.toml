@@ -1,8 +1,10 @@
 schema_version = 1
 
 [appearance]
+appearance_mode = "dark"
 bar_background = "desktop"
 bar_position = "top"
+palette = "onyx"
 tile_background = false
 tile_spacing = 0
 
@@ -41,6 +43,52 @@ instant_switching = false
 
 [[tiles]]
 acknowledged_configuration_notices = []
+configuration_schema_version = 1
+id = "cpu_memory-f7ea7a75-b216-4134-bfa0-db27d6de56c1"
+kind = "cpu_memory"
+settings_revision = 7
+
+[tiles.placement]
+display = "main"
+is_enabled = false
+order = 3
+zone = "right"
+
+[tiles.settings]
+popover_density = "compact"
+
+[[tiles]]
+acknowledged_configuration_notices = []
+configuration_schema_version = 1
+id = "volume-89827D88-EB66-4731-BE83-DEC8C4FB9218"
+kind = "volume"
+settings_revision = 0
+
+[tiles.placement]
+display = "main"
+is_enabled = true
+order = 0
+zone = "right"
+
+[tiles.settings]
+
+[[tiles]]
+acknowledged_configuration_notices = []
+configuration_schema_version = 1
+id = "pomodoro-2EFE6134-FEA1-4DA3-AE8A-2479FF75D70A"
+kind = "pomodoro"
+settings_revision = 0
+
+[tiles.placement]
+display = "main"
+is_enabled = false
+order = 0
+zone = "right"
+
+[tiles.settings]
+
+[[tiles]]
+acknowledged_configuration_notices = []
 configuration_schema_version = 4
 id = "now_playing-E77D1D81-4073-405A-8405-29E5E95B1977"
 kind = "now_playing"
@@ -49,7 +97,7 @@ settings_revision = 44
 [tiles.placement]
 display = "main"
 is_enabled = true
-order = 0
+order = 1
 zone = "right"
 
 [tiles.settings]
@@ -67,7 +115,7 @@ settings_revision = 0
 [tiles.placement]
 display = "main"
 is_enabled = true
-order = 1
+order = 2
 zone = "right"
 
 [tiles.settings]
@@ -82,21 +130,6 @@ settings_revision = 0
 [tiles.placement]
 display = "main"
 is_enabled = true
-order = 2
-zone = "right"
-
-[tiles.settings]
-
-[[tiles]]
-acknowledged_configuration_notices = []
-configuration_schema_version = 1
-id = "cpu_memory-f7ea7a75-b216-4134-bfa0-db27d6de56c1"
-kind = "cpu_memory"
-settings_revision = 0
-
-[tiles.placement]
-display = "main"
-is_enabled = false
 order = 3
 zone = "right"
 
@@ -111,8 +144,8 @@ settings_revision = 0
 
 [tiles.placement]
 display = "main"
-is_enabled = false
-order = 3
+is_enabled = true
+order = 4
 zone = "right"
 
 [tiles.settings]
@@ -127,21 +160,6 @@ settings_revision = 0
 [tiles.placement]
 display = "main"
 is_enabled = true
-order = 3
-zone = "right"
-
-[tiles.settings]
-
-[[tiles]]
-acknowledged_configuration_notices = []
-configuration_schema_version = 1
-id = "volume-89827D88-EB66-4731-BE83-DEC8C4FB9218"
-kind = "volume"
-settings_revision = 0
-
-[tiles.placement]
-display = "main"
-is_enabled = false
 order = 5
 zone = "right"
 
@@ -149,7 +167,7 @@ zone = "right"
 
 [[tiles]]
 acknowledged_configuration_notices = []
-configuration_schema_version = 2
+configuration_schema_version = 3
 id = "network-F5B40F9A-D7D1-4BAE-8A76-E270CD9DDF97"
 kind = "network"
 settings_revision = 0
@@ -157,7 +175,7 @@ settings_revision = 0
 [tiles.placement]
 display = "main"
 is_enabled = true
-order = 4
+order = 6
 zone = "right"
 
 [tiles.settings]
@@ -171,8 +189,8 @@ settings_revision = 0
 
 [tiles.placement]
 display = "main"
-is_enabled = true
-order = 5
+is_enabled = false
+order = 6
 zone = "right"
 
 [tiles.settings]
@@ -182,12 +200,12 @@ acknowledged_configuration_notices = []
 configuration_schema_version = 2
 id = "battery-0A3259C4-11CA-4FF0-9965-B66AA8A7BE1E"
 kind = "battery"
-settings_revision = 0
+settings_revision = 8
 
 [tiles.placement]
 display = "main"
 is_enabled = true
-order = 6
+order = 7
 zone = "right"
 
 [tiles.settings]
@@ -201,23 +219,8 @@ settings_revision = 0
 
 [tiles.placement]
 display = "main"
-is_enabled = true
-order = 7
-zone = "right"
-
-[tiles.settings]
-
-[[tiles]]
-acknowledged_configuration_notices = []
-configuration_schema_version = 1
-id = "pomodoro-2EFE6134-FEA1-4DA3-AE8A-2479FF75D70A"
-kind = "pomodoro"
-settings_revision = 0
-
-[tiles.placement]
-display = "main"
 is_enabled = false
-order = 9
+order = 6
 zone = "right"
 
 [tiles.settings]
@@ -232,7 +235,7 @@ settings_revision = 10
 [tiles.placement]
 display = "main"
 is_enabled = false
-order = 8
+order = 9
 zone = "right"
 
 [tiles.settings]

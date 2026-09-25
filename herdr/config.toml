@@ -98,8 +98,15 @@ command = "lazygit"
 width = "90%"
 height = "90%"
 
+# ── Launcher popup: plain words in, herdr action out (tgomareli.launcher) ───
+[[keys.command]]
+key = "ctrl+alt+o"
+type = "plugin_action"
+command = "tgomareli.launcher.open"
+description = "launcher"
+
 [theme]
-name = "rose-pine"
+name = "catppuccin-latte"
 auto_switch = false
 
 [ui.toast]

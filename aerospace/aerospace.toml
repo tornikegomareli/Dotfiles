@@ -14,11 +14,11 @@ after-startup-command = []
 # Notify Tilebar about workspace changes
 exec-on-workspace-change = [
     '/bin/sh', '-c',
-    '/Users/tgomareli/Library/Developer/Xcode/DerivedData/Tilebar-azhhgtalcjqrfbetsahhdaongzwm/Build/Products/Debug/Tilebar.app/Contents/MacOS/tilebar-helper event workspace_change "$AEROSPACE_FOCUSED_WORKSPACE" "$AEROSPACE_PREV_WORKSPACE"'
+    '/Users/tgomareli/.local/bin/tilebar-helper event workspace_change "$AEROSPACE_FOCUSED_WORKSPACE" "$AEROSPACE_PREV_WORKSPACE"'
 ]
 
 on-focus-changed = [
-    'exec-and-forget /Users/tgomareli/Library/Developer/Xcode/DerivedData/Tilebar-azhhgtalcjqrfbetsahhdaongzwm/Build/Products/Debug/Tilebar.app/Contents/MacOS/tilebar-helper event focus_change'
+    'exec-and-forget /Users/tgomareli/.local/bin/tilebar-helper event focus_change'
 ]
 
 # Start AeroSpace at login
@@ -34,7 +34,7 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 accordion-padding = 0
 
 # Possible values: tiles|accordion
-default-root-container-layout = 'accordion'
+default-root-container-layout = 'tiles'
 
 # Possible values: horizontal|vertical|auto
 # 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
@@ -70,9 +70,9 @@ automatically-unhide-macos-hidden-apps = false
     inner.horizontal = 10
     inner.vertical =   10
     outer.left =       15
-    outer.bottom =     20
+    outer.bottom =     45
     # Reserve Tilebar's 38-point panel height plus 10 points of breathing room.
-    outer.top = 48
+    outer.top = 45
     outer.right =      15
 
 # 'main' binding mode declaration
@@ -210,7 +210,7 @@ run = ['move-node-to-workspace 2']
 # 4. Ghostty
 [[on-window-detected]]
 if.app-id = 'com.mitchellh.ghostty'
-run = ['move-node-to-workspace 3']
+run = ['layout tiling', 'move-node-to-workspace 3']
 
 # 5. Slack
 [[on-window-detected]]

@@ -19,3 +19,16 @@ tilebar/config.toml.bak*
 tilebar/config.toml.before-*
 tilebar/config.toml.e2e-backup
 tilebar/set-test-tile.sh
+
+# Secrets
+.env
+
+# herdr plugin checkouts and generated registry
+herdr/plugins/github/
+herdr/plugins.json
+
+# App runtime state and caches
+raycast/
+hunk/state.json
+default.profraw
+aerospace/aerospace.toml.backup-*
